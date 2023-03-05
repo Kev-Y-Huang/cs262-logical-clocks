@@ -1,10 +1,12 @@
+import multiprocessing
+import os
+import socket
+import time
 import unittest
 from unittest.mock import patch
-import multiprocessing
-import time
-import socket
-import os
-from clocks import Listener, send_message, machine_process
+
+from clocks import Listener, machine_process, send_message
+
 
 class TestSendMessage(unittest.TestCase):
     @patch('clocks.socket.socket')
@@ -30,12 +32,13 @@ class TestSendMessage(unittest.TestCase):
         port = 6664
         logical_clock = -1
         self.assertRaises(OverflowError, send_message, port, logical_clock)
-    
+
     @patch('clocks.socket.socket')
     def test_send_message_with_improper_port_and_logical_clock(self, mock_socket):
         port = -1
         logical_clock = -1
         self.assertRaises(OverflowError, send_message, port, logical_clock)
+
 
 class TestListener(unittest.TestCase):
     def test_run_and_exit(self):
@@ -53,19 +56,20 @@ class TestListener(unittest.TestCase):
         self.assertTrue(listener.exit.is_set())
 
 
-
 class TestMachineProcess(unittest.TestCase):
     global_time = time.time()
+
     def test_machine_process(self):
         machine_id = 0
         queue = multiprocessing.Queue()
         ports = [5555, 5556, 5557]
         total_run_time = 10
-        machine_process(self.global_time, machine_id, queue, ports, total_run_time)
+        machine_process(self.global_time, machine_id,
+                        queue, ports, total_run_time)
         self.assertEqual(queue.get(), 0)
         self.assertEqual(queue.get(), 1)
         self.assertEqual(queue.get(), 2)
-        
+
     def delete_log_files_generated(self):
         os.remove(f"{self.global_time}_machine_0.log")
 

@@ -30,7 +30,7 @@ def setup_logger(name: str, log_file: str, level: int = logging.INFO):
     logger.addHandler(streamHandler)
 
 
-def gen_log_message(event_type: EventType, clock_time: int, received_time: int = 0, queue_len: int = 0, recip_id: int = 0) -> str:
+def gen_message(event_type: EventType, clock_time: int, received_time: int = 0, queue_len: int = 0, recip_id: int = 0) -> str:
     '''
     Write in the log that it received
         1. a message

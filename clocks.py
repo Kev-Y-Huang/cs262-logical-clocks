@@ -4,9 +4,11 @@ import select
 import socket
 import time
 from multiprocessing import Event, Manager, Process
-from queue import Queue
 
-from utils import EventType, gen_log_message, setup_logger
+from utils import EventType, gen_message, setup_logger
+
+
+PORTS = [6666, 7777, 9999]
 
 
 def send_message(port: int, logical_clock: int):
@@ -43,7 +45,8 @@ class Listener(Process):
         Change the photo's gamma exposure.
 
     """
-    def __init__(self, host, port, queue):
+
+    def __init__(self, port, queue):
         Process.__init__(self)
         self.port = port
         self.queue = queue
@@ -54,24 +57,30 @@ class Listener(Process):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server.bind(('127.0.0.1', self.port))
-        self.server.listen(5)
+        self.server.listen(10)
+
+        inputs = [self.server]
 
         # Continuously listen for messages and add them to the queue
         while not self.exit.is_set():
             # Use select to poll for messages
-            inputs = [self.server]
             read_sockets, write_socket, error_socket = select.select(
                 inputs, [], inputs, 0.1)
             for sock in read_sockets:
-                client, _ = sock.accept()
-                data = client.recv(1024)
-                # Read in the data as a big-endian integer
-                data = int.from_bytes(data, 'big')
-                if data:
-                    self.queue.put(data)
-                client.close()
+                if sock == self.server:
+                    client, _ = sock.accept()
+                    inputs.append(client)
+                else:
+                    data = sock.recv(1024)
+                    if data:
+                        # Read in the data as a big-endian integer
+                        data = int.from_bytes(data, 'big')
+                        if data:
+                            self.queue.put(data)
 
-        self.socket.close()
+        for sock in inputs:
+            sock.close()
+
         print("Exited")
 
     def shutdown(self):
@@ -79,7 +88,7 @@ class Listener(Process):
         self.exit.set()
 
 
-def machine_process(global_time: time, machine_id: int, queue: Queue, ports: list[int], total_run_time: int):
+def machine_process(global_time: time, machine_id: int, total_run_time: int):
     """
     Virtual machine process that sends and ingests messages from other virtual machines.
 
@@ -96,14 +105,28 @@ def machine_process(global_time: time, machine_id: int, queue: Queue, ports: lis
     total_run_time : int
         Global time for which the process was started at.
     """
+    # Start listener process for this machine process
+    queue = Manager().Queue()
+    listener = Listener(PORTS[machine_id], queue)
+    listener.start()
+
     # Setup logger for this machine process
     log_name = f'{global_time}_machine_{machine_id}'
     setup_logger(log_name, f'./logs/{global_time}_machine_{machine_id}.log')
     log = logging.getLogger(log_name)
 
     # Set up clock rate and logical clock
-    rate = random.randint(1, 6)
     logical_clock = 0
+    rate = random.randint(1, 6)
+    log.info(f'Clock rate: {rate}')
+
+    # Set up connections to other machines
+    conns = {}
+    for i in range(2):
+        recip_id = (machine_id + i + 1) % 3
+        conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        conn.connect(('127.0.0.1', PORTS[recip_id]))
+        conns[recip_id] = conn
 
     for _ in range(total_run_time):
         for _ in range(rate):
@@ -115,7 +138,7 @@ def machine_process(global_time: time, machine_id: int, queue: Queue, ports: lis
                 received_time = queue.get()
                 queue_len = queue.qsize()
                 logical_clock = max(logical_clock, received_time)
-                log.info(gen_log_message(
+                log.info(gen_message(
                     EventType.RECEIVED, logical_clock, received_time=received_time, queue_len=queue_len))
             else:
                 # Generate a random number to determine what to do
@@ -123,58 +146,57 @@ def machine_process(global_time: time, machine_id: int, queue: Queue, ports: lis
                 # Send a message to one machine
                 if diceRoll == 1:
                     recip_id = (machine_id + 1) % 3
-                    send_message(ports[recip_id], logical_clock)
-                    log.info(gen_log_message(
+                    conns[recip_id].send(
+                        logical_clock.to_bytes(4, 'big'))
+                    log.info(gen_message(
                         EventType.SENT_ONE, logical_clock, recip_id=recip_id))
                 # Send a message to the other machine
                 elif diceRoll == 2:
                     recip_id = (machine_id + 2) % 3
-                    send_message(ports[recip_id], logical_clock)
-                    log.info(gen_log_message(
+                    conns[recip_id].send(
+                        logical_clock.to_bytes(4, 'big'))
+                    log.info(gen_message(
                         EventType.SENT_ONE, logical_clock, recip_id=recip_id))
                 # Send a message to both machines
                 elif diceRoll == 3:
-                    for i in range(2):
-                        recip_id = (machine_id + i) % 3
-                        send_message(recip_id, logical_clock)
-                        
-                    log.info(gen_log_message(
+                    for conn in conns.values():
+                        conn.send(logical_clock.to_bytes(4, 'big'))
+
+                    log.info(gen_message(
                         EventType.SENT_BOTH, logical_clock))
                 # Treat as an internal event
                 else:
-                    log.info(gen_log_message(
+                    log.info(gen_message(
                         EventType.INTERNAL, logical_clock))
 
             # Sleep for the remainder of the cycle
             time.sleep(1.0/rate - (time.time() - internal_start_time))
 
+    # Close all connections
+    for conn in conns.values():
+        conn.close()
+
+    # Shutdown listener process
+    listener.shutdown()
+
 
 if __name__ == "__main__":
+    processes = []
     try:
-        # initialize 3 sockets
-        ports = [6666, 7777, 9999]
-
         # Setup state for the machine processes
-        listeners = []
-        queues = []
-        m = Manager()
         global_time = time.time()
 
         total_run_time = 3
 
         for i in range(3):
-            queues.append(m.Queue())
-            listeners.append(Listener(ports[i], queues[i]))
-            listeners[i].start()
+            processes.append(Process(target=machine_process,
+                             args=(global_time, i, total_run_time)))
+            processes[i].start()
 
-        for i in range(3):
-            Process(target=machine_process, args=(global_time, i, queues[i], ports, total_run_time)).start()
+        for proc in processes:
+            proc.join()
 
-        time.sleep(total_run_time + 1)
-
-        for i in range(3):
-            listeners[i].shutdown()
     except KeyboardInterrupt:
         print('Interrupted')
-        for i in range(3):
-            listeners[i].shutdown()
+        for proc in processes:
+            proc.shutdown()
