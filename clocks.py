@@ -12,9 +12,9 @@ PORTS = [6666, 7777, 9999]
 
 
 def send_message(port: int, logical_clock: int):
-    '''
+    """
     This function should send a message to the host and port specified.
-    '''
+    """
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('127.0.0.1', port))
     # Send the logical clock time using big-endian encoding
@@ -24,25 +24,24 @@ def send_message(port: int, logical_clock: int):
 
 class Listener(Process):
     """
-    Array with associated photographic information.
-
+    Listener process that listens for messages from other virtual machines.
     ...
 
     Attributes
     ----------
     port : int
-        Exposure in seconds.
+        Port for the listener process.
     queue : Queue
-        Exposure in seconds.
-    host : str
+        Queue for all incoming messages.
+    exit : Event
         Exposure in seconds.
 
     Methods
     -------
     run()
-        Represent the photo in the given colorspace.
+        Represents the listener process activity.
     shutdown()
-        Change the photo's gamma exposure.
+        Initiates the shutdown of the listener process.
 
     """
 
@@ -64,7 +63,7 @@ class Listener(Process):
         # Continuously listen for messages and add them to the queue
         while not self.exit.is_set():
             # Use select to poll for messages
-            read_sockets, write_socket, error_socket = select.select(
+            read_sockets, _, _ = select.select(
                 inputs, [], inputs, 0.1)
             for sock in read_sockets:
                 if sock == self.server:
@@ -98,12 +97,9 @@ def machine_process(global_time: time, machine_id: int, total_run_time: int):
         Global time for which the process was started at.
     machine_id : int
         Id of the machine process.
-    queue : Queue
-        Queue of all messages sent to this machine process.
-    ports : list[int]
-        List of ports for all machine processes.
     total_run_time : int
-        Global time for which the process was started at.
+        Amount of seconds the process should run for.
+
     """
     # Start listener process for this machine process
     queue = Manager().Queue()
@@ -181,22 +177,19 @@ def machine_process(global_time: time, machine_id: int, total_run_time: int):
 
 
 if __name__ == "__main__":
-    processes = []
+    # Setup state for the machine processes
+    procs = []
+    global_time = time.time()
+    total_run_time = 3
+
     try:
-        # Setup state for the machine processes
-        global_time = time.time()
-
-        total_run_time = 3
-
+        # Start machine processes
         for i in range(3):
-            processes.append(Process(target=machine_process,
-                             args=(global_time, i, total_run_time)))
-            processes[i].start()
-
-        for proc in processes:
-            proc.join()
+            proc = Process(target=machine_process, args=(global_time, i, total_run_time))
+            proc.start()
+            procs.append(proc)
 
     except KeyboardInterrupt:
         print('Interrupted')
-        for proc in processes:
+        for proc in procs:
             proc.shutdown()
