@@ -1,0 +1,50 @@
+2023-03-03 19:55:43,228 : (System Time 2023-03-03 19:55:43.228303 - Logical Clock Time 1) Internal event occurred.
+2023-03-03 19:55:43,429 : (System Time 2023-03-03 19:55:43.429337 - Logical Clock Time 2) Internal event occurred.
+2023-03-03 19:55:43,637 : (System Time 2023-03-03 19:55:43.637336 - Logical Clock Time 3) Sent a message to machine 0.
+2023-03-03 19:55:43,843 : (System Time 2023-03-03 19:55:43.843350 - Logical Clock Time 4) Internal event occurred.
+2023-03-03 19:55:44,049 : (System Time 2023-03-03 19:55:44.049263 - Logical Clock Time 5) Internal event occurred.
+2023-03-03 19:55:44,253 : (System Time 2023-03-03 19:55:44.253250 - Logical Clock Time 6) Internal event occurred.
+2023-03-03 19:55:44,456 : (System Time 2023-03-03 19:55:44.456739 - Logical Clock Time 7) Internal event occurred.
+2023-03-03 19:55:44,660 : (System Time 2023-03-03 19:55:44.660578 - Logical Clock Time 8) Internal event occurred.
+2023-03-03 19:55:44,864 : (System Time 2023-03-03 19:55:44.864358 - Logical Clock Time 9) Internal event occurred.
+2023-03-03 19:55:45,067 : (System Time 2023-03-03 19:55:45.067978 - Logical Clock Time 10) Sent a message to both other machines.
+2023-03-03 19:55:45,269 : (System Time 2023-03-03 19:55:45.269175 - Logical Clock Time 11) Internal event occurred.
+2023-03-03 19:55:45,472 : (System Time 2023-03-03 19:55:45.472958 - Logical Clock Time 12) Internal event occurred.
+2023-03-03 19:55:45,676 : (System Time 2023-03-03 19:55:45.676514 - Logical Clock Time 13) Received a message with logical time 11. Current queue length is 0.
+2023-03-03 19:55:45,878 : (System Time 2023-03-03 19:55:45.878292 - Logical Clock Time 14) Internal event occurred.
+2023-03-03 19:55:46,081 : (System Time 2023-03-03 19:55:46.081336 - Logical Clock Time 15) Internal event occurred.
+2023-03-03 19:55:46,285 : (System Time 2023-03-03 19:55:46.285918 - Logical Clock Time 16) Internal event occurred.
+2023-03-03 19:55:46,491 : (System Time 2023-03-03 19:55:46.491679 - Logical Clock Time 17) Received a message with logical time 14. Current queue length is 0.
+2023-03-03 19:55:46,697 : (System Time 2023-03-03 19:55:46.697110 - Logical Clock Time 18) Received a message with logical time 17. Current queue length is 0.
+2023-03-03 19:55:46,900 : (System Time 2023-03-03 19:55:46.900627 - Logical Clock Time 19) Sent a message to machine 0.
+2023-03-03 19:55:47,107 : (System Time 2023-03-03 19:55:47.107219 - Logical Clock Time 20) Sent a message to machine 0.
+2023-03-03 19:55:47,310 : (System Time 2023-03-03 19:55:47.310387 - Logical Clock Time 21) Internal event occurred.
+2023-03-03 19:55:47,512 : (System Time 2023-03-03 19:55:47.512687 - Logical Clock Time 22) Internal event occurred.
+2023-03-03 19:55:47,720 : (System Time 2023-03-03 19:55:47.720021 - Logical Clock Time 23) Received a message with logical time 22. Current queue length is 0.
+2023-03-03 19:55:47,922 : (System Time 2023-03-03 19:55:47.922124 - Logical Clock Time 24) Received a message with logical time 23. Current queue length is 0.
+2023-03-03 19:55:48,127 : (System Time 2023-03-03 19:55:48.127248 - Logical Clock Time 25) Received a message with logical time 24. Current queue length is 1.
+2023-03-03 19:55:48,326 : (System Time 2023-03-03 19:55:48.326730 - Logical Clock Time 26) Received a message with logical time 24. Current queue length is 0.
+2023-03-03 19:55:48,530 : (System Time 2023-03-03 19:55:48.530798 - Logical Clock Time 27) Internal event occurred.
+2023-03-03 19:55:48,734 : (System Time 2023-03-03 19:55:48.734105 - Logical Clock Time 28) Internal event occurred.
+2023-03-03 19:55:48,937 : (System Time 2023-03-03 19:55:48.937529 - Logical Clock Time 29) Received a message with logical time 28. Current queue length is 0.
+2023-03-03 19:55:49,139 : (System Time 2023-03-03 19:55:49.139630 - Logical Clock Time 30) Internal event occurred.
+2023-03-03 19:55:49,343 : (System Time 2023-03-03 19:55:49.343302 - Logical Clock Time 31) Sent a message to machine 1.
+2023-03-03 19:55:49,544 : (System Time 2023-03-03 19:55:49.544866 - Logical Clock Time 32) Internal event occurred.
+2023-03-03 19:55:49,748 : (System Time 2023-03-03 19:55:49.748599 - Logical Clock Time 33) Received a message with logical time 30. Current queue length is 0.
+2023-03-03 19:55:49,951 : (System Time 2023-03-03 19:55:49.951221 - Logical Clock Time 34) Internal event occurred.
+2023-03-03 19:55:50,155 : (System Time 2023-03-03 19:55:50.155394 - Logical Clock Time 35) Received a message with logical time 34. Current queue length is 0.
+2023-03-03 19:55:50,360 : (System Time 2023-03-03 19:55:50.360155 - Logical Clock Time 36) Internal event occurred.
+2023-03-03 19:55:50,562 : (System Time 2023-03-03 19:55:50.562105 - Logical Clock Time 37) Internal event occurred.
+2023-03-03 19:55:50,764 : (System Time 2023-03-03 19:55:50.764256 - Logical Clock Time 38) Received a message with logical time 37. Current queue length is 0.
+2023-03-03 19:55:50,966 : (System Time 2023-03-03 19:55:50.966925 - Logical Clock Time 39) Internal event occurred.
+2023-03-03 19:55:51,171 : (System Time 2023-03-03 19:55:51.171086 - Logical Clock Time 40) Sent a message to both other machines.
+2023-03-03 19:55:51,374 : (System Time 2023-03-03 19:55:51.373810 - Logical Clock Time 41) Sent a message to machine 1.
+2023-03-03 19:55:51,579 : (System Time 2023-03-03 19:55:51.579505 - Logical Clock Time 42) Internal event occurred.
+2023-03-03 19:55:51,785 : (System Time 2023-03-03 19:55:51.785506 - Logical Clock Time 43) Received a message with logical time 41. Current queue length is 0.
+2023-03-03 19:55:51,990 : (System Time 2023-03-03 19:55:51.990539 - Logical Clock Time 44) Sent a message to machine 0.
+2023-03-03 19:55:52,195 : (System Time 2023-03-03 19:55:52.195927 - Logical Clock Time 45) Internal event occurred.
+2023-03-03 19:55:52,401 : (System Time 2023-03-03 19:55:52.401099 - Logical Clock Time 46) Internal event occurred.
+2023-03-03 19:55:52,606 : (System Time 2023-03-03 19:55:52.606667 - Logical Clock Time 47) Sent a message to both other machines.
+2023-03-03 19:55:52,809 : (System Time 2023-03-03 19:55:52.809032 - Logical Clock Time 48) Sent a message to machine 1.
+2023-03-03 19:55:53,013 : (System Time 2023-03-03 19:55:53.013907 - Logical Clock Time 49) Internal event occurred.
+2023-03-03 19:55:53,216 : (System Time 2023-03-03 19:55:53.215840 - Logical Clock Time 50) Sent a message to machine 1.

@@ -1,0 +1,12 @@
+2023-03-04 23:40:54,891 : (System Time 2023-03-04 23:40:54.891724 - Logical Clock Time 1) Internal event occurred.
+2023-03-04 23:40:55,154 : (System Time 2023-03-04 23:40:55.154013 - Logical Clock Time 2) Internal event occurred.
+2023-03-04 23:40:55,412 : (System Time 2023-03-04 23:40:55.412263 - Logical Clock Time 3) Internal event occurred.
+2023-03-04 23:40:55,668 : (System Time 2023-03-04 23:40:55.668947 - Logical Clock Time 4) Internal event occurred.
+2023-03-04 23:40:55,924 : (System Time 2023-03-04 23:40:55.924748 - Logical Clock Time 5) Internal event occurred.
+2023-03-04 23:40:56,175 : (System Time 2023-03-04 23:40:56.175906 - Logical Clock Time 6) Received a message with logical time 7. Current queue length is 0.
+2023-03-04 23:40:56,435 : (System Time 2023-03-04 23:40:56.435139 - Logical Clock Time 8) Internal event occurred.
+2023-03-04 23:40:56,694 : (System Time 2023-03-04 23:40:56.694859 - Logical Clock Time 9) Received a message with logical time 6. Current queue length is 0.
+2023-03-04 23:40:56,954 : (System Time 2023-03-04 23:40:56.954673 - Logical Clock Time 10) Internal event occurred.
+2023-03-04 23:40:57,210 : (System Time 2023-03-04 23:40:57.210039 - Logical Clock Time 11) Internal event occurred.
+2023-03-04 23:40:57,466 : (System Time 2023-03-04 23:40:57.466527 - Logical Clock Time 12) Received a message with logical time 8. Current queue length is 0.
+2023-03-04 23:40:57,725 : (System Time 2023-03-04 23:40:57.724829 - Logical Clock Time 13) Internal event occurred.

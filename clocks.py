@@ -1,47 +1,64 @@
 import logging
-import time
-import socket
 import random
-import multiprocessing
-from multiprocessing import Process
-from utils import setup_logger, gen_log_message
+import select
+import socket
+import time
+from multiprocessing import Event, Manager, Process
+from queue import Queue
+
+from utils import EventType, gen_log_message, setup_logger
 
 
-def send_message(port, logical_clock):
+def send_message(port: int, logical_clock: int):
     '''
     This function should send a message to the host and port specified.
     '''
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('127.0.0.1', port))
+    # Send the logical clock time using big-endian encoding
     s.send(logical_clock.to_bytes(4, 'big'))
     s.close()
-    
-            
-class Listener():
+
+
+class Listener(Process):
     def __init__(self, host, port, queue):
+        Process.__init__(self)
         self.host = host
         self.port = port
         self.queue = queue
+        self.exit = Event()
 
-    def listen(self):
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.socket.bind((self.host, self.port))
-        self.socket.listen(5)
+    def run(self):
+        # Create a socket and bind it to the host and port
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.server.bind((self.host, self.port))
+        self.server.listen(5)
 
-        while True:
-            client, _ = self.socket.accept()
-            data = client.recv(1024)
-            data = int.from_bytes(data, 'big')
-            if data:
-                self.queue.put(data)
-            client.close()
-    
-    def close(self):
+        # Continuously listen for messages and add them to the queue
+        while not self.exit.is_set():
+            # Use select to poll for messages
+            inputs = [self.server]
+            read_sockets, write_socket, error_socket = select.select(
+                inputs, [], inputs, 0.1)
+            for sock in read_sockets:
+                client, _ = sock.accept()
+                data = client.recv(1024)
+                # Read in the data as a big-endian integer
+                data = int.from_bytes(data, 'big')
+                if data:
+                    self.queue.put(data)
+                client.close()
+
         self.socket.close()
-        
+        print("Exited")
 
-def machine_process(global_time: time, machine_id: int, listener: Listener, sending_port_1: int, sending_port_2: int, total_run_time: int):
+    def shutdown(self):
+        print("Shutdown initiated")
+        self.exit.set()
+
+
+def machine_process(global_time: time, machine_id: int, queue: Queue, ports: list[int], total_run_time: int):
     '''
     If there is a message in the message queue for the machine (remember, the
     queue is not running at the same cycle speed) the virtual machine should:
@@ -67,44 +84,53 @@ def machine_process(global_time: time, machine_id: int, listener: Listener, send
       update the local logical clock, and log the internal event, the system
       time, and the logical clock value.
     '''
+    # Setup logger for this machine process
     log_name = f'{global_time}_machine_{machine_id}'
     setup_logger(log_name, f'./logs/{global_time}_machine_{machine_id}.log')
-    process_log = logging.getLogger(log_name)
+    log = logging.getLogger(log_name)
 
+    # Set up clock rate and logical clock
     rate = random.randint(1, 6)
-    logical_clock = 0 
-    internal_start_time = time.time()
+    logical_clock = 0
+
     for _ in range(total_run_time):
-      for _ in range(rate):
-          internal_start_time = time.time()
-          logical_clock += 1
-          if not listener.queue.empty():
-              logical_clock_value_received = listener.queue.get()
-              process_log.info(gen_log_message(0, logical_clock, queue_len=listener.queue.qsize()))
-              # print(f"Machine {listener.port} received message with clock value of {logical_clock_value_received} at time {logical_clock}")
-              logical_clock = max(logical_clock, logical_clock_value_received) + 1
+        for _ in range(rate):
+            internal_start_time = time.time()
+            logical_clock += 1
 
-          diceRoll = random.randint(1, 10)
-          if diceRoll == 1:
-              # print(f"Machine {listener.port} sending message to machine 1 at time {logical_clock}")
-              recip_id = (machine_id + 1) % 3
-              process_log.info(gen_log_message(1, logical_clock, recip_id=recip_id))
-              send_message(sending_port_1, logical_clock)
-          elif diceRoll == 2:
-              # print(f"Machine {listener.port} sending message to machine 2 at time {logical_clock}")
-              recip_id = (machine_id + 2) % 3
-              process_log.info(gen_log_message(1, logical_clock, recip_id=recip_id))
-              send_message(sending_port_2, logical_clock)
-          elif diceRoll == 3:
-              # print(f"Machine {listener.port} sending message to both machines at time {logical_clock}")
-              process_log.info(gen_log_message(3, logical_clock))
-              send_message(sending_port_1, logical_clock)
-              send_message(sending_port_2, logical_clock)
-          else:
-              # print(f"Machine {listener.port} internal event at time {logical_clock}")
-              process_log.info(gen_log_message(4, logical_clock))
+            # Check if there is a message in the queue
+            if not queue.empty():
+                received_time = queue.get()
+                queue_len = queue.qsize()
+                logical_clock = max(logical_clock, received_time)
+                log.info(gen_log_message(
+                    EventType.RECEIVED, logical_clock, received_time=received_time, queue_len=queue_len))
+            else:
+                # Generate a random number to determine what to do
+                diceRoll = random.randint(1, 10)
+                if diceRoll == 1:
+                    recip_id = (machine_id + 1) % 3
+                    send_message(ports[recip_id], logical_clock)
+                    log.info(gen_log_message(
+                        EventType.SENT_ONE, logical_clock, recip_id=recip_id))
+                elif diceRoll == 2:
+                    recip_id = (machine_id + 2) % 3
+                    send_message(ports[recip_id], logical_clock)
+                    log.info(gen_log_message(
+                        EventType.SENT_ONE, logical_clock, recip_id=recip_id))
+                elif diceRoll == 3:
+                    for i in range(2):
+                        recip_id = (machine_id + i) % 3
+                        send_message(recip_id, logical_clock)
+                        
+                    log.info(gen_log_message(
+                        EventType.SENT_BOTH, logical_clock))
+                else:
+                    log.info(gen_log_message(
+                        EventType.INTERNAL, logical_clock))
 
-          time.sleep(1.0/rate - (time.time() - internal_start_time))
+            # Sleep for the remainder of the cycle
+            time.sleep(1.0/rate - (time.time() - internal_start_time))
 
 
 if __name__ == "__main__":
@@ -112,25 +138,26 @@ if __name__ == "__main__":
         # initialize 3 sockets
         ports = [6666, 7777, 9999]
 
-        total_run_time = 10
+        total_run_time = 3
 
         listeners = []
+        queues = []
+        m = Manager()
         global_time = time.time()
 
-        m = multiprocessing.Manager()
+        for i in range(3):
+            queues.append(m.Queue())
+            listeners.append(Listener('127.0.0.1', ports[i], queues[i]))
+            listeners[i].start()
 
         for i in range(3):
-            listeners.append(Listener('127.0.0.1', ports[i], m.Queue()))
-            Process(target = listeners[i].listen).start()
-
-        for i in range(3):
-            Process(target = machine_process, args = (global_time, i, listeners[i], ports[(i + 1) % 3], ports[(i + 2) % 3], total_run_time)).start()
+            Process(target=machine_process, args=(global_time, i, queues[i], ports, total_run_time)).start()
 
         time.sleep(total_run_time + 1)
 
         for i in range(3):
-            listeners[i].close()
+            listeners[i].shutdown()
     except KeyboardInterrupt:
         print('Interrupted')
         for i in range(3):
-            listeners[i].close()
+            listeners[i].shutdown()
