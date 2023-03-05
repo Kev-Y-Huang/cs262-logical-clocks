@@ -21,9 +21,30 @@ def send_message(port: int, logical_clock: int):
 
 
 class Listener(Process):
+    """
+    Array with associated photographic information.
+
+    ...
+
+    Attributes
+    ----------
+    port : int
+        Exposure in seconds.
+    queue : Queue
+        Exposure in seconds.
+    host : str
+        Exposure in seconds.
+
+    Methods
+    -------
+    run()
+        Represent the photo in the given colorspace.
+    shutdown()
+        Change the photo's gamma exposure.
+
+    """
     def __init__(self, host, port, queue):
         Process.__init__(self)
-        self.host = host
         self.port = port
         self.queue = queue
         self.exit = Event()
@@ -32,7 +53,7 @@ class Listener(Process):
         # Create a socket and bind it to the host and port
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.server.bind((self.host, self.port))
+        self.server.bind(('127.0.0.1', self.port))
         self.server.listen(5)
 
         # Continuously listen for messages and add them to the queue
@@ -59,31 +80,22 @@ class Listener(Process):
 
 
 def machine_process(global_time: time, machine_id: int, queue: Queue, ports: list[int], total_run_time: int):
-    '''
-    If there is a message in the message queue for the machine (remember, the
-    queue is not running at the same cycle speed) the virtual machine should:
-    1. take one message off the queue
-    2. update the local logical clock
-    3. write in the log that it received
-        a. a message
-        b. the global time (gotten from the system)
-        c. the length of the message queue
-        d. and the logical clock time.
-    If there is no message in the queue, the virtual machine should generate a
-    random number in the range of 1-10, and
-    * if the value is 1, send to one of the other machines a message that is
-      the local logical clock time, update it's own logical clock, and update
-      the log with the send, the system time, and the logical clock time.
-    * if the value is 2, send to the other virtual machine a message that is
-      the local logical clock time, update it's own logical clock, and update
-      the log with the send, the system time, and the logical clock time.
-    * if the value is 3, send to both of the other virtual machines a message
-      that is the logical clock time, update it's own logical clock, and update
-      the log with the send, the system time, and the logical clock time.
-    * if the value is other than 1-3, treat the cycle as an internal event;
-      update the local logical clock, and log the internal event, the system
-      time, and the logical clock value.
-    '''
+    """
+    Virtual machine process that sends and ingests messages from other virtual machines.
+
+    Parameter
+    ---------
+    global_time : time
+        Global time for which the process was started at.
+    machine_id : int
+        Id of the machine process.
+    queue : Queue
+        Queue of all messages sent to this machine process.
+    ports : list[int]
+        List of ports for all machine processes.
+    total_run_time : int
+        Global time for which the process was started at.
+    """
     # Setup logger for this machine process
     log_name = f'{global_time}_machine_{machine_id}'
     setup_logger(log_name, f'./logs/{global_time}_machine_{machine_id}.log')
@@ -98,7 +110,7 @@ def machine_process(global_time: time, machine_id: int, queue: Queue, ports: lis
             internal_start_time = time.time()
             logical_clock += 1
 
-            # Check if there is a message in the queue
+            # Check if there is a message in the queue to ingest
             if not queue.empty():
                 received_time = queue.get()
                 queue_len = queue.qsize()
@@ -108,16 +120,19 @@ def machine_process(global_time: time, machine_id: int, queue: Queue, ports: lis
             else:
                 # Generate a random number to determine what to do
                 diceRoll = random.randint(1, 10)
+                # Send a message to one machine
                 if diceRoll == 1:
                     recip_id = (machine_id + 1) % 3
                     send_message(ports[recip_id], logical_clock)
                     log.info(gen_log_message(
                         EventType.SENT_ONE, logical_clock, recip_id=recip_id))
+                # Send a message to the other machine
                 elif diceRoll == 2:
                     recip_id = (machine_id + 2) % 3
                     send_message(ports[recip_id], logical_clock)
                     log.info(gen_log_message(
                         EventType.SENT_ONE, logical_clock, recip_id=recip_id))
+                # Send a message to both machines
                 elif diceRoll == 3:
                     for i in range(2):
                         recip_id = (machine_id + i) % 3
@@ -125,6 +140,7 @@ def machine_process(global_time: time, machine_id: int, queue: Queue, ports: lis
                         
                     log.info(gen_log_message(
                         EventType.SENT_BOTH, logical_clock))
+                # Treat as an internal event
                 else:
                     log.info(gen_log_message(
                         EventType.INTERNAL, logical_clock))
@@ -138,16 +154,17 @@ if __name__ == "__main__":
         # initialize 3 sockets
         ports = [6666, 7777, 9999]
 
-        total_run_time = 3
-
+        # Setup state for the machine processes
         listeners = []
         queues = []
         m = Manager()
         global_time = time.time()
 
+        total_run_time = 3
+
         for i in range(3):
             queues.append(m.Queue())
-            listeners.append(Listener('127.0.0.1', ports[i], queues[i]))
+            listeners.append(Listener(ports[i], queues[i]))
             listeners[i].start()
 
         for i in range(3):
