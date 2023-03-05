@@ -19,7 +19,7 @@ python clocks.py
 
 1. Run the following command in the root directory of the project
 ```bash
-python tests.py
+python3 -m unittest tests.py
 ```
 
 ## Project Directory Structure
