@@ -91,8 +91,8 @@ def machine_process(global_time: time, machine_id: int, total_run_time: int):
     """
     Virtual machine process that sends and ingests messages from other virtual machines.
 
-    Parameter
-    ---------
+    Parameters
+    ----------
     global_time : time
         Global time for which the process was started at.
     machine_id : int

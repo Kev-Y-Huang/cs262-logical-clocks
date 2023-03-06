@@ -25,6 +25,7 @@ python3 -m unittest tests.py
 ## Project Directory Structure
 ```
 cs262-base-implementation
+├───logs                # directory storing log files from different runs
 ├───.gitignore          # gitignore file
 ├───clocks.py           # Actual implementation
 ├───tests.py            # Unit tests
