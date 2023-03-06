@@ -8,7 +8,7 @@ from multiprocessing import Event, Manager, Process
 from utils import EventType, gen_message, setup_logger
 
 
-PORTS = [6666, 7777, 9999]
+PORTS = [4444, 4445, 4446]
 
 
 def send_message(port: int, logical_clock: int):
@@ -50,14 +50,13 @@ class Listener(Process):
         self.port = port
         self.queue = queue
         self.exit = Event()
-
-    def run(self):
         # Create a socket and bind it to the host and port
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server.bind(('127.0.0.1', self.port))
         self.server.listen(10)
 
+    def run(self):
         inputs = [self.server]
 
         # Continuously listen for messages and add them to the queue
