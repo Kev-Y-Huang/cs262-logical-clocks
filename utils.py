@@ -1,4 +1,3 @@
-import datetime
 import logging
 from enum import Enum
 
@@ -58,8 +57,7 @@ def gen_message(event: EventType, clock_time: int, received_time: int = 0, queue
 
     """
     # Get the system and logical clock time and format it
-    system_time = datetime.datetime.now()
-    time_message = f"(System Time {system_time} - Logical Clock Time {clock_time})"
+    time_message = f"(Logical Clock Time {clock_time})"
 
     # Generate the log message based on the event type
     if event == EventType.RECEIVED:

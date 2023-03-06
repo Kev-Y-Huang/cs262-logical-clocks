@@ -42,10 +42,9 @@ class TestSendMessage(unittest.TestCase):
 
 class TestListener(unittest.TestCase):
     def test_run_and_exit(self):
-        host = '127.0.0.1'
         port = 6665
         queue = multiprocessing.Queue()
-        listener = Listener(host, port, queue)
+        listener = Listener(port, queue)
         listener.start()
         time.sleep(0.5)
         try:
