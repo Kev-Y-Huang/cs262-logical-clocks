@@ -2,6 +2,8 @@
 
 ## Analysis of results
 
+[Presentation slides](https://docs.google.com/presentation/d/1wH0nhtxOqBf24_KemDlondbWPpwuR5HtyjgaH2j-0X0/edit?usp=sharing)
+
 We see a few trends from our experimental results:
 
 - When clock rates are the same, the system behaves as expected. The experimental values for the logical clock were very close to the expected values.
