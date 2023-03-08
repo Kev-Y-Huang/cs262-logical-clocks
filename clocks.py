@@ -11,7 +11,7 @@ from utils import EventType, gen_message, setup_logger
 PORTS = [4444, 4445, 4446]
 HOST = '127.0.0.1'
 MAX_SIZE = 4
-TOTAL_RUN_TIME = 3
+TOTAL_RUN_TIME = 3  # In seconds
 
 
 class Listener(Thread):
@@ -57,7 +57,7 @@ class Listener(Thread):
         self.inputs = [self.server]
 
     def run(self):
-        # Continuously listen for messages and add them to the queue
+        # Continuously poll for messages while exit event has not been set
         while not self.exit.is_set():
             self.poll_for_messages()
 
@@ -71,8 +71,9 @@ class Listener(Thread):
     def poll_for_messages(self):
         # Use select.select to poll for messages
         read_sockets, _, _ = select.select(self.inputs, [], [], 0.1)
+
         for sock in read_sockets:
-            # If the socket is the server, then accept the new connection
+            # If the socket is the server socket, accept as a connection
             if sock == self.server:
                 client, _ = sock.accept()
                 self.inputs.append(client)
@@ -82,8 +83,8 @@ class Listener(Thread):
                 if data:
                     # Read in the data as a big-endian integer
                     self.queue.put(int.from_bytes(data, 'big'))
+                # If there is no data, then the connection has been closed
                 else:
-                    # If there is no data, then the connection has been closed
                     sock.close()
                     self.inputs.remove(sock)
 
@@ -116,10 +117,12 @@ class Machine(Thread):
     -------
     run()
         Represents the virtual machine process activity.
-    send_logical_clock(conn: socket.socket)
-        Sends the logical clock time to another socket connection.
+    operation()
+        Performs an operation dependent on the state of queue.
     no_message_operation(diceRoll: int)
         Performs an operation dependent on the dice roll value.
+    send_logical_clock(conn: socket.socket)
+        Sends the logical clock time to another socket connection.
     shutdown()
         Initiates the shutdown of the virtual process.
 
@@ -158,17 +161,7 @@ class Machine(Thread):
             internal_start_time = time.time()
             self.logical_clock += 1
 
-            # Check if there is a message in the queue to ingest
-            if not self.queue.empty():
-                received_time = self.queue.get()
-                queue_len = self.queue.qsize()
-                self.logical_clock = max(self.logical_clock, received_time)
-                log.info(gen_message(EventType.RECEIVED, self.logical_clock,
-                         received_time=received_time, queue_len=queue_len))
-            else:
-                # Generate a random number to determine what to do
-                dice_roll = random.randint(1, 10)
-                log.info(self.no_message_operation(dice_roll))
+            log.info(self.operation())
 
             # Sleep for the remainder of the cycle
             time.sleep(1.0/rate - (time.time() - internal_start_time))
@@ -179,6 +172,18 @@ class Machine(Thread):
 
         # Shutdown listener process
         listener.shutdown()
+
+    def operation(self):
+        # Check if there is a message in the queue to ingest
+        if not self.queue.empty():
+            received_time = self.queue.get()
+            queue_len = self.queue.qsize()
+            self.logical_clock = max(self.logical_clock, received_time)
+            return gen_message(EventType.RECEIVED, self.logical_clock, received_time=received_time, queue_len=queue_len)
+        else:
+            # Generate a random number to determine what to do
+            dice_roll = random.randint(1, 10)
+            return self.no_message_operation(dice_roll)
 
     def no_message_operation(self, dice_roll: int):
         # Send a message to one of the machines

@@ -22,7 +22,7 @@ class TestListener(unittest.TestCase):
             listener.shutdown()
             listener.join()
         self.assertTrue(listener.exit.is_set())
-        self.assertTrue(len(listener.inputs) == 0)
+        self.assertEqual(len(listener.inputs), 0)
 
     @patch('socket.socket')
     @patch('select.select')
@@ -37,7 +37,7 @@ class TestListener(unittest.TestCase):
         listener.poll_for_messages()
 
         # Checks that a new connection has been made and has been added to the list of input sockets
-        self.assertTrue(len(listener.inputs) > 1)
+        self.assertGreater(len(listener.inputs), 1)
 
     @patch('socket.socket')
     @patch('select.select')
@@ -54,8 +54,8 @@ class TestListener(unittest.TestCase):
         listener.poll_for_messages()
 
         # Checks that the message has been added to the queue
-        self.assertTrue(listener.queue.qsize() == 1)
-        self.assertTrue(listener.queue.get() == 1023)
+        self.assertEqual(listener.queue.qsize(), 1)
+        self.assertEqual(listener.queue.get(), 1023)
 
     @patch('socket.socket')
     @patch('select.select')
@@ -72,12 +72,62 @@ class TestListener(unittest.TestCase):
         listener.poll_for_messages()
 
         # Checks that the disconnected socket has been removed from the input list
-        self.assertTrue(len(listener.inputs) == 1)
+        self.assertEqual(len(listener.inputs), 1)
 
 
 class TestMachine(unittest.TestCase):
     global_time = time.time()
     logging.disable(logging.CRITICAL)
+
+    @patch.object(Machine, 'operation')
+    @patch('clocks.socket.socket')
+    @patch('clocks.Listener')
+    @patch('clocks.setup_logger')
+    def test_run(self, mock_setup_logger, mock_listener, mock_socket, mock_operation):
+        machine_id = 0
+        machine = Machine(self.global_time, machine_id)
+        machine.start()
+
+        mock_setup_logger.assert_called_once()
+        mock_setup_logger().info.assert_called()
+
+        mock_listener.assert_called_once()
+        mock_listener().start.assert_called_once()
+
+        self.assertEqual(mock_socket.call_count, 2)
+        self.assertEqual(mock_socket().connect.call_count, 2)
+
+        mock_operation.assert_called()
+
+        time.sleep(0.5)
+        try:
+            self.assertFalse(machine.exit.is_set())
+        finally:
+            machine.shutdown()
+            machine.join()
+
+        self.assertEqual(mock_socket().close.call_count, 2)
+        mock_listener().shutdown.assert_called_once()
+        self.assertTrue(machine.exit.is_set())
+        self.assertGreater(machine.logical_clock, 0)
+
+    def test_operation_has_messages(self):
+        machine_id = 0
+        machine = Machine(self.global_time, machine_id)
+        machine.queue.put(1)
+
+        machine.operation()
+
+        self.assertEqual(machine.logical_clock, 1)
+
+    @patch.object(Machine, 'no_message_operation')
+    def test_has_no_messages(self, mock_no_message_operation, ):
+        machine_id = 0
+        machine = Machine(self.global_time, machine_id)
+
+        machine.operation()
+
+        mock_no_message_operation.assert_called_once()
 
     @patch('clocks.gen_message')
     @patch.object(Machine, 'send_logical_clock')
@@ -86,11 +136,9 @@ class TestMachine(unittest.TestCase):
         machine = Machine(self.global_time, machine_id)
         machine.conns = {1: 1, 2: 2}
 
-        mock_gen_message.return_value = 1
+        machine.no_message_operation(1)
 
-        assert machine.no_message_operation(1) == 1
-
-        mock_send_logical_clock.assert_called_once_with(1,)
+        mock_send_logical_clock.assert_called_once_with(1)
         mock_gen_message.assert_called_once_with(
             EventType.SENT_ONE, 0, recip_id=1)
 
