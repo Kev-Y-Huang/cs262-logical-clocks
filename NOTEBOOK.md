@@ -1,5 +1,40 @@
 # Engineering Notebook
 
+## Analysis of results
+
+We see a few trends from our experimental results:
+
+- When clock rates are the same, the system behaves as expected. The experimental values for the logical clock were very close to the expected values.
+- *Queue size*: When clock rates differ, the slowest clock rate typically gets the largest queue size, and the fastest clock rate typically gets the smallest queue size. This makes sense because the slowest clock rate will process things slower as it ticks slower, and the fastest clock rate will have the smallest logical clock differences because of out fast it is going. 
+- *Logical clock jumps*: When the clock rates differ, there are more jumps in the clock ticks for slower clocks rates. This makes sense because the slower clock rates will receive more messages from faster moving clocks and thus have larger logical clock differences between machine operations, therefore leading to larger jumps in the clock ticks.
+- *Drift*: Slower clocks experience more drift compared when they are in a system with machines with faster clocks. The experimental clock rates for slower clocks in systems with faster clocks were a lot farther away from their expected clock rate compared to the faster clock rates.
+- When clock rates were different but close together, the numbers were closer to expected. Larger discrepancies were found when the range between the min and max clock rate of the machines was larger.
+- The fastest machine almost never needs to update its logical clock, it always grows in increments of 1 per tick. 
+
+Delving into each of the five experiments in more detail:
+
+In Experiment 1, the machines have different actual clock rates, resulting in different logical clock differences.
+
+Machine 0 has the slowest clock rate of 1.000, while Machine 2 has the fastest clock rate of 6.000, and Machine 1 had a clock rate of 3.000. We see that Machine 0's experimental clock rate (0.002) drifted very far from the expected clock rate (1.000), while Machine 2's experimental clock rate (0.170) was very close to its true value (0.167) and Machine 1's (0.268 experimental, 0.333 true) was in between the two in terms of accuracy. 
+
+We also see that Machine 0 had to update is logical clock in much larger increments, with an average logical clock difference of 3.869 between machine operations. Not surprisingly, Machine 1 had an average of 1.953, which was inbetween Machine 0 and Machine 2's average logical clock update of 1.000.
+
+
+In Experiment 2, the machines have different actual clock rates, resulting in different logical clock differences. However, this time, the clock rates were closer to their true expected values compared to Experiment 1.
+
+Within this experiment, Machine 0's experimental clock rate (0.392) drifted farthest from its expected clock rate (0.500), while Machine 2's experimental clock rate (0.254) was very close to its true value (0.250) and again Machine 1's (0.303 experimental, 0.333 true) was in between the two in terms of accuracy. 
+
+Similar to Experiment 1, Machine 0 had to update is logical clock in much larger increments, with an average logical clock difference of 1.980 between machine operations. Machine 1 had an average increase in logical clock per tick of 1.314, and again Machine 2 had an average of 1.000. Notice again Machine 2 had a tick of 1, and also how these increments are smaller than Experiment 1, which makes sense because the clock rates are closer together.
+
+In Experiment 3, all machines have the same actual clock rate, resulting in the same logical clock differences. In this experiment, we saw behavior from our machines that was expected. The experimental clock rates were all 0.337, which were very close to their expected clock rates of 0.333, and we saw no large jumps in the logical clock values for any machine. We also saw how all of the logical clocks increased on average by 1.000 per tick, which was expected since all of the machines had the same clock rate.
+
+In Experiment 4, two of the machines (Machine 0 and Machine 2) have the same clock rates while a third (Machine 1) had a much slower clock rate. This resulted in different logical clock differences between the faster two and the slower third machine, but not between the two faster machines themselves.
+
+Within this experiment, Machine 1's experimental clock rate (0.002) drifted farthest from its expected clock rate (1.000), while Machine 0's and 2's experimental clock rate were the same and (0.204) were very close to their true value (0.200). We also saw that the two faster machines' logical clocks increased on average by 1 per tick, while the slower machine's logical clock increased on average by 2.758 per tick. 
+
+Finally, in Experiment 5, the randomly generated numbers gave us two of the machines (Machine 1 and Machine 2) have the same clock rates while a third (Machine 0) had a faster clock rate. However, this time the numbers were closer together (clock rates of 2, 1, and 1). Within this experiment, Machine 1 and 2's experimental clock rates (0.003) drifted farther from its expected clock rate (1.000), while Machine 0's experimental clock rate was the same and (0.504) was very close to its true value (0.500). Similar to experiment 4, we saw that the machines with the same clock rate saw the same average increase in their logical clocks per tick. Here, the slower machines increased on average by 1.980 per tick, while the faster machine's logical clock increased on average by 1.000 per tick. 
+
+
 ## Key Decisions/Justifications and Issues
 
 ### Using a server to spin up three separate processes:
