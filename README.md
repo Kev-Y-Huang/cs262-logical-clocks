@@ -29,7 +29,8 @@ cs262-base-implementation
 ├───.gitignore          # gitignore file
 ├───clocks.py           # Actual implementation
 ├───tests.py            # Unit tests
-├───analysis.ipynb      # Analysis notebook of the results
+├───analysis.ipynb      # Analysis notebook code of the results
+├───log_analysis.txt    # Numerical results from analysis
 ├───LICENSE             
 ├───NOTEBOOK.md         # Engineering Notebook
 └───README.md           # README for cs262-base-implementation
