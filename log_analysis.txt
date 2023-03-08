@@ -1,0 +1,110 @@
+## Experiment 1:
+### Machine 0:
+Actual clock rate: 1.000 (tick every 1.000 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 3.869 		 16.000      1.000
+Difference in system time between machine operations: 	 0.003 		 0.008 		 0.000
+Experiment clock rates: (seconds between clock ticks): 	 0.002 		 0.006 		 0.000
+
+### Machine 1:
+Actual clock rate: 3.000 (tick every 0.333 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.953 		 15.000      1.000
+Difference in system time between machine operations: 	 0.337 		 0.349 		 0.333
+Experiment clock rates: (seconds between clock ticks): 	 0.268 		 0.339 		 0.023
+
+### Machine 2:
+Actual clock rate: 6.000 (tick every 0.167 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.170 		 0.181 		 0.166
+Experiment clock rates: (seconds between clock ticks): 	 0.170 		 0.181 		 0.166
+
+## Experiment 2:
+### Machine 0:
+Actual clock rate: 2.000 (tick every 0.500 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.980 		 10.000 	 1.000
+Difference in system time between machine operations: 	 0.504 		 0.514 		 0.498
+Experiment clock rates: (seconds between clock ticks): 	 0.392 		 0.514 		 0.050
+
+### Machine 1:
+Actual clock rate: 3.000 (tick every 0.333 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.314 		 6.000 		 1.000
+Difference in system time between machine operations: 	 0.337 		 0.346 		 0.332
+Experiment clock rates: (seconds between clock ticks): 	 0.303 		 0.346 		 0.056
+
+### Machine 2:
+Actual clock rate: 4.000 (tick every 0.250 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.254 		 0.257 		 0.250
+Experiment clock rates: (seconds between clock ticks): 	 0.254 		 0.257 		 0.250
+
+## Experiment 3:
+### Machine 0:
+Actual clock rate: 3.000 (tick every 0.333 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.337 		 0.354 		 0.331
+Experiment clock rates: (seconds between clock ticks): 	 0.337 		 0.354 		 0.331
+
+### Machine 1:
+Actual clock rate: 3.000 (tick every 0.333 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.337 		 0.345 		 0.333
+Experiment clock rates: (seconds between clock ticks): 	 0.337 		 0.345 		 0.333
+
+### Machine 2:
+Actual clock rate: 3.000 (tick every 0.333 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.337 		 0.356 		 0.332
+Experiment clock rates: (seconds between clock ticks): 	 0.337 		 0.356 		 0.332
+
+## Experiment 4:
+### Machine 0:
+Actual clock rate: 5.000 (tick every 0.200 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.204 		 0.215 		 0.200
+Experiment clock rates: (seconds between clock ticks): 	 0.204 		 0.215 		 0.200
+
+### Machine 1:
+Actual clock rate: 1.000 (tick every 1.000 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 2.758 		 9.000 		 1.000
+Difference in system time between machine operations: 	 0.004 		 0.017 		 0.000
+Experiment clock rates: (seconds between clock ticks): 	 0.002 		 0.009 		 0.000
+
+### Machine 2:
+Actual clock rate: 5.000 (tick every 0.200 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.204 		 0.210 		 0.199
+Experiment clock rates: (seconds between clock ticks): 	 0.204 		 0.210 		 0.199
+
+## Experiment 5:
+### Machine 0:
+Actual clock rate: 2.000 (tick every 0.500 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.000 		 1.000 		 1.000
+Difference in system time between machine operations: 	 0.504 		 0.507 		 0.500
+Experiment clock rates: (seconds between clock ticks): 	 0.504 		 0.507 		 0.500
+
+### Machine 1:
+Actual clock rate: 1.000 (tick every 1.000 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.980 		 11.000 	 1.000
+Difference in system time between machine operations: 	 0.004 		 0.006 		 0.000
+Experiment clock rates: (seconds between clock ticks): 	 0.003 		 0.006 		 0.000
+
+### Machine 2:
+Actual clock rate: 1.000 (tick every 1.000 seconds)
+                                                         Avg 		 Max 		 Min
+Difference in logical clock between machine operations:	 1.980 		 11.000 	 1.000
+Difference in system time between machine operations: 	 0.004 		 0.006 		 0.000
+Experiment clock rates: (seconds between clock ticks): 	 0.003 		 0.006 		 0.000
+

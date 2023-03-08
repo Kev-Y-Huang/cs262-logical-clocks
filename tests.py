@@ -4,9 +4,10 @@ import socket
 import time
 import unittest
 from unittest.mock import patch
+import logging
 
-from clocks import Listener, machine_process, send_message
-
+from clocks import Listener, send_message
+from utils import EventType, gen_message, setup_logger
 
 class TestSendMessage(unittest.TestCase):
     @patch('clocks.socket.socket')
@@ -42,10 +43,9 @@ class TestSendMessage(unittest.TestCase):
 
 class TestListener(unittest.TestCase):
     def test_run_and_exit(self):
-        host = '127.0.0.1'
         port = 6665
         queue = multiprocessing.Queue()
-        listener = Listener(host, port, queue)
+        listener = Listener(port, queue, 'machine_0.log')
         listener.start()
         time.sleep(0.5)
         try:
@@ -55,25 +55,41 @@ class TestListener(unittest.TestCase):
             listener.join()
         self.assertTrue(listener.exit.is_set())
 
-
-class TestMachineProcess(unittest.TestCase):
-    global_time = time.time()
-
-    def test_machine_process(self):
-        machine_id = 0
-        queue = multiprocessing.Queue()
-        ports = [5555, 5556, 5557]
-        total_run_time = 10
-        machine_process(self.global_time, machine_id,
-                        queue, ports, total_run_time)
-        self.assertEqual(queue.get(), 0)
-        self.assertEqual(queue.get(), 1)
-        self.assertEqual(queue.get(), 2)
-
     def delete_log_files_generated(self):
-        os.remove(f"{self.global_time}_machine_0.log")
+        os.remove(f"machine_0.log")
 
+class TestGenMessage(unittest.TestCase):
+    def test_gen_message_received(self):
+        message = gen_message(EventType.RECEIVED, 5, 3, 10, 2)
+        expected_message = "(Logical Clock Time 5) Received a message with logical time 3. Current queue length is 10."
+        self.assertEqual(message, expected_message)
+
+    def test_gen_message_sent_one(self):
+        message = gen_message(EventType.SENT_ONE, 8, recip_id=3)
+        expected_message = "(Logical Clock Time 8) Sent a message to machine 3."
+        self.assertEqual(message, expected_message)
+
+    def test_gen_message_sent_both(self):
+        message = gen_message(EventType.SENT_BOTH, 10)
+        expected_message = "(Logical Clock Time 10) Sent a message to both other machines."
+        self.assertEqual(message, expected_message)
+
+    def test_gen_message_internal(self):
+        message = gen_message(EventType.INTERNAL, 15)
+        expected_message = "(Logical Clock Time 15) Internal event occurred."
+        self.assertEqual(message, expected_message)
+
+class TestSetupLogger(unittest.TestCase):
+    def test_setup_logger(self):
+        logger_name = 'test_logger'
+        log_file = 'logs/test.log'
+        setup_logger(logger_name, log_file)
+        logger = logging.getLogger(logger_name)
+        # assert that test.log file was created in directory
+        self.assertTrue(os.path.exists(log_file))
+
+    def tearDown(self):
+        os.remove("logs/test.log")
 
 if __name__ == '__main__':
-    TestMachineProcess.global_time = time.time()
     unittest.main()
