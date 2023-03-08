@@ -9,6 +9,7 @@ from threading import Event, Thread
 from utils import EventType, gen_message, setup_logger
 
 PORTS = [4444, 4445, 4446]
+HOST = '127.0.0.1'
 
 
 def send_message(port: int, logical_clock: int):
@@ -16,7 +17,7 @@ def send_message(port: int, logical_clock: int):
     This function should send a message to the host and port specified.
     """
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('127.0.0.1', port))
+    s.connect((HOST, port))
     # Send the logical clock time using big-endian encoding
     s.send(logical_clock.to_bytes(4, 'big'))
     s.close()
@@ -59,7 +60,7 @@ class Listener(Thread):
         # Create a socket and bind it to the host and port
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.server.bind(('127.0.0.1', self.port))
+        self.server.bind((HOST, self.port))
         self.server.listen(10)
 
         # Add the server socket to the list of inputs
@@ -122,6 +123,7 @@ class Machine(Thread):
     
     def __init__(self, global_time: time, machine_id: int, total_run_time: int):
         Thread.__init__(self)
+        self.global_time = global_time
         self.machine_id = machine_id
         self.total_run_time = total_run_time
         self.logical_clock = 0
@@ -130,9 +132,9 @@ class Machine(Thread):
 
     def run(self):
         # Setup logger for this machine process
-        log_name = f'{global_time}_machine_{self.machine_id}'
+        log_name = f'{self.global_time}_machine_{self.machine_id}'
         setup_logger(
-            log_name, f'./logs/{global_time}_machine_{self.machine_id}.log')
+            log_name, f'./logs/{self.global_time}_machine_{self.machine_id}.log')
         self.log = logging.getLogger(log_name)
 
         # Set up clock rate
@@ -149,7 +151,7 @@ class Machine(Thread):
         for i in range(2):
             recip_id = (self.machine_id + i + 1) % 3
             conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            conn.connect(('127.0.0.1', PORTS[recip_id]))
+            conn.connect((HOST, PORTS[recip_id]))
             conns[recip_id] = conn
 
         for _ in range(self.total_run_time * self.rate):

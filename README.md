@@ -13,7 +13,7 @@ CS 262: Introduction to Distributed Computing.
 1. Clone the repository
 2. Run the following command in the root directory of the project
 ```bash
-python clocks.py
+python3 clocks.py
 ```
 ## Testing
 
@@ -29,6 +29,7 @@ cs262-base-implementation
 ├───.gitignore          # gitignore file
 ├───clocks.py           # Actual implementation
 ├───tests.py            # Unit tests
+├───analysis.ipynb      # Analysis notebook of the results
 ├───LICENSE             
 ├───NOTEBOOK.md         # Engineering Notebook
 └───README.md           # README for cs262-base-implementation
