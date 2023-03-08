@@ -1,4 +1,3 @@
-import logging
 import random
 import select
 import socket
@@ -10,17 +9,7 @@ from utils import EventType, gen_message, setup_logger
 
 PORTS = [4444, 4445, 4446]
 HOST = '127.0.0.1'
-
-
-def send_message(port: int, logical_clock: int):
-    """
-    This function should send a message to the host and port specified.
-    """
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((HOST, port))
-    # Send the logical clock time using big-endian encoding
-    s.send(logical_clock.to_bytes(4, 'big'))
-    s.close()
+MAX_SIZE = 4
 
 
 class Listener(Thread):
@@ -34,8 +23,6 @@ class Listener(Thread):
         Port for the listener process.
     queue : Queue
         Queue for all incoming messages.
-    log : logging.Logger
-        Logger for the virtual machine process.
     exit : Event
         Event that is set when the process should exit.
     server : socket.socket
@@ -50,11 +37,10 @@ class Listener(Thread):
 
     """
 
-    def __init__(self, port: int, queue: Queue, log: logging.Logger):
+    def __init__(self, port: int, queue: Queue):
         Thread.__init__(self)
         self.port = port
         self.queue = queue
-        self.log = log
         self.exit = Event()
 
         # Create a socket and bind it to the host and port
@@ -69,12 +55,14 @@ class Listener(Thread):
     def run(self):
         # Continuously listen for messages and add them to the queue
         while not self.exit.is_set():
-            # Use select to poll for messages
+            # Use select.select to poll for messages
             read_sockets, _, _ = select.select(self.inputs, [], [], 0.1)
             for sock in read_sockets:
+                # If the socket is the server, then accept the new connection
                 if sock == self.server:
                     client, _ = sock.accept()
                     self.inputs.append(client)
+                # Otherwise, read the data from the socket
                 else:
                     data = sock.recv(1024)
                     if data:
@@ -99,6 +87,8 @@ class Machine(Thread):
 
     Attributes
     ----------
+    global_time : time
+        Global time at which the simulation started.
     machine_id : int
         Id of the machine process.
     total_run_time : int
@@ -116,11 +106,13 @@ class Machine(Thread):
     -------
     run()
         Represents the virtual machine process activity.
+    send_logical_clock(conn: socket.socket)
+        Sends the logical clock time to another socket connection.
     shutdown()
         Initiates the shutdown of the virtual process.
 
     """
-    
+
     def __init__(self, global_time: time, machine_id: int, total_run_time: int):
         Thread.__init__(self)
         self.global_time = global_time
@@ -129,21 +121,17 @@ class Machine(Thread):
         self.logical_clock = 0
         self.exit = Event()
 
-
     def run(self):
         # Setup logger for this machine process
-        log_name = f'{self.global_time}_machine_{self.machine_id}'
-        setup_logger(
-            log_name, f'./logs/{self.global_time}_machine_{self.machine_id}.log')
-        self.log = logging.getLogger(log_name)
+        log = setup_logger(f'{self.global_time}_machine_{self.machine_id}')
 
         # Set up clock rate
-        self.rate = random.randint(1, 6)
-        self.log.info(f'Clock rate: {self.rate}')
+        rate = random.randint(1, 6)
+        log.info(f'Clock rate: {rate}')
 
-        # Start listener process for this machine process
+        # Start a parallel listener process for this machine process
         queue = Queue()
-        listener = Listener(PORTS[self.machine_id], queue, self.log)
+        listener = Listener(PORTS[self.machine_id], queue)
         listener.start()
 
         # Set up connections to other machines
@@ -154,7 +142,7 @@ class Machine(Thread):
             conn.connect((HOST, PORTS[recip_id]))
             conns[recip_id] = conn
 
-        for _ in range(self.total_run_time * self.rate):
+        for _ in range(self.total_run_time * rate):
             # Exit if the exit event flag is set
             if self.exit.is_set():
                 break
@@ -166,43 +154,32 @@ class Machine(Thread):
             if not queue.empty():
                 received_time = queue.get()
                 queue_len = queue.qsize()
-                self.logical_clock = max(
-                    self.logical_clock, received_time)
-                self.log.info(gen_message(
-                    EventType.RECEIVED, self.logical_clock, received_time=received_time, queue_len=queue_len))
+                self.logical_clock = max(self.logical_clock, received_time)
+                log.info(gen_message(EventType.RECEIVED, self.logical_clock,
+                         received_time=received_time, queue_len=queue_len))
             else:
                 # Generate a random number to determine what to do
                 diceRoll = random.randint(1, 10)
-                # Send a message to one machine
-                if diceRoll == 1:
-                    recip_id = (self.machine_id + 1) % 3
-                    conns[recip_id].send(
-                        self.logical_clock.to_bytes(4, 'big'))
-                    self.log.info(gen_message(
-                        EventType.SENT_ONE, self.logical_clock, recip_id=recip_id))
-                # Send a message to the other machine
-                elif diceRoll == 2:
-                    recip_id = (self.machine_id + 2) % 3
-                    conns[recip_id].send(
-                        self.logical_clock.to_bytes(4, 'big'))
-                    self.log.info(gen_message(
-                        EventType.SENT_ONE, self.logical_clock, recip_id=recip_id))
+                # Send a message to one of the machines
+                if diceRoll == 1 or diceRoll == 2:
+                    recip_id = (self.machine_id + diceRoll) % 3
+                    self.send_logical_clock(conns[recip_id])
+                    log.info(gen_message(EventType.SENT_ONE,
+                             self.logical_clock, recip_id=recip_id))
                 # Send a message to both machines
                 elif diceRoll == 3:
                     for conn in conns.values():
-                        conn.send(
-                            self.logical_clock.to_bytes(4, 'big'))
+                        self.send_logical_clock(conn)
 
-                    self.log.info(gen_message(
+                    log.info(gen_message(
                         EventType.SENT_BOTH, self.logical_clock))
                 # Treat as an internal event
                 else:
-                    self.log.info(gen_message(
+                    log.info(gen_message(
                         EventType.INTERNAL, self.logical_clock))
 
             # Sleep for the remainder of the cycle
-            time.sleep(1.0/self.rate -
-                       (time.time() - internal_start_time))
+            time.sleep(1.0/rate - (time.time() - internal_start_time))
 
         # Close all connections
         for conn in conns.values():
@@ -210,6 +187,9 @@ class Machine(Thread):
 
         # Shutdown listener process
         listener.shutdown()
+
+    def send_logical_clock(self, conn: socket.socket):
+        conn.send(self.logical_clock.to_bytes(MAX_SIZE, 'big'))
 
     def shutdown(self):
         print('Machine Shutdown Initiated')
@@ -225,8 +205,6 @@ if __name__ == "__main__":
     try:
         # Start machine processes
         for i in range(3):
-            # proc = Process(target=machine_process, args=(
-            #     global_time, i, total_run_time))
             proc = Machine(global_time, i, total_run_time)
             proc.start()
             procs.append(proc)

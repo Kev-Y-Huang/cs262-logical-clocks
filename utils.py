@@ -12,14 +12,29 @@ class EventType(Enum):
     INTERNAL = 3
 
 
-def setup_logger(name: str, log_file: str, level: int = logging.INFO):
+def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     """
-    Set up a logger to write to a file and to the console.
+    Setup the logger for the machine process.
+    ...
+
+    Parameters
+    ----------
+    name : str
+        The name of the logger.
+    level : int
+        The level of logging to record.
+
+    Returns
+    -------
+    logging.Logger
+        The logger object.
+
     """
     logger = logging.getLogger(name)
     formatter = logging.Formatter('%(asctime)s : %(message)s')
 
     # Set up the file handler for writing to the log file
+    log_file = f'./logs/{name}.log'
     fileHandler = logging.FileHandler(log_file, mode='w')
     fileHandler.setFormatter(formatter)
 
@@ -30,6 +45,8 @@ def setup_logger(name: str, log_file: str, level: int = logging.INFO):
     logger.setLevel(level)
     logger.addHandler(fileHandler)
     logger.addHandler(streamHandler)
+
+    return logger
 
 
 def gen_message(event: EventType, clock_time: int, received_time: int = 0, queue_len: int = 0, recip_id: int = 0) -> str:
