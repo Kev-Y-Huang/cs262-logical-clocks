@@ -25,13 +25,13 @@ python3 -m unittest tests.py
 ## Project Directory Structure
 ```
 cs262-base-implementation
-├───logs                # directory storing log files from different runs
+├───logs                # directory storing log files from different experimental runs
 ├───.gitignore          # gitignore file
-├───clocks.py           # Actual implementation
+├───clocks.py           # Actual code implementation
 ├───tests.py            # Unit tests
-├───analysis.ipynb      # Analysis notebook code of the results
+├───analysis.ipynb      # Jupyter notebook computing trends from experimental logs
 ├───log_analysis.txt    # Numerical results from analysis
 ├───LICENSE             
-├───NOTEBOOK.md         # Engineering Notebook
+├───NOTEBOOK.md         # Engineering Notebook containing design decisions
 └───README.md           # README for cs262-base-implementation
 ```
