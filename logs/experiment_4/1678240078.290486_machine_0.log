@@ -1,0 +1,501 @@
+2023-03-07 20:47:58,290 : Clock rate: 5
+2023-03-07 20:47:58,317 : (Logical Clock Time 1) Internal event occurred.
+2023-03-07 20:47:58,522 : (Logical Clock Time 2) Internal event occurred.
+2023-03-07 20:47:58,728 : (Logical Clock Time 3) Internal event occurred.
+2023-03-07 20:47:58,931 : (Logical Clock Time 4) Received a message with logical time 3. Current queue length is 0.
+2023-03-07 20:47:59,135 : (Logical Clock Time 5) Internal event occurred.
+2023-03-07 20:47:59,340 : (Logical Clock Time 6) Received a message with logical time 5. Current queue length is 0.
+2023-03-07 20:47:59,544 : (Logical Clock Time 7) Sent a message to machine 2.
+2023-03-07 20:47:59,749 : (Logical Clock Time 8) Sent a message to both other machines.
+2023-03-07 20:47:59,951 : (Logical Clock Time 9) Sent a message to machine 1.
+2023-03-07 20:48:00,152 : (Logical Clock Time 10) Sent a message to machine 2.
+2023-03-07 20:48:00,357 : (Logical Clock Time 11) Internal event occurred.
+2023-03-07 20:48:00,559 : (Logical Clock Time 12) Internal event occurred.
+2023-03-07 20:48:00,763 : (Logical Clock Time 13) Internal event occurred.
+2023-03-07 20:48:00,968 : (Logical Clock Time 14) Internal event occurred.
+2023-03-07 20:48:01,173 : (Logical Clock Time 15) Internal event occurred.
+2023-03-07 20:48:01,376 : (Logical Clock Time 16) Internal event occurred.
+2023-03-07 20:48:01,580 : (Logical Clock Time 17) Internal event occurred.
+2023-03-07 20:48:01,783 : (Logical Clock Time 18) Sent a message to machine 2.
+2023-03-07 20:48:01,985 : (Logical Clock Time 19) Internal event occurred.
+2023-03-07 20:48:02,190 : (Logical Clock Time 20) Sent a message to both other machines.
+2023-03-07 20:48:02,395 : (Logical Clock Time 21) Internal event occurred.
+2023-03-07 20:48:02,600 : (Logical Clock Time 22) Internal event occurred.
+2023-03-07 20:48:02,801 : (Logical Clock Time 23) Internal event occurred.
+2023-03-07 20:48:03,007 : (Logical Clock Time 24) Internal event occurred.
+2023-03-07 20:48:03,211 : (Logical Clock Time 25) Internal event occurred.
+2023-03-07 20:48:03,416 : (Logical Clock Time 26) Sent a message to both other machines.
+2023-03-07 20:48:03,618 : (Logical Clock Time 27) Internal event occurred.
+2023-03-07 20:48:03,819 : (Logical Clock Time 28) Internal event occurred.
+2023-03-07 20:48:04,023 : (Logical Clock Time 29) Internal event occurred.
+2023-03-07 20:48:04,228 : (Logical Clock Time 30) Internal event occurred.
+2023-03-07 20:48:04,433 : (Logical Clock Time 31) Sent a message to machine 1.
+2023-03-07 20:48:04,638 : (Logical Clock Time 32) Received a message with logical time 31. Current queue length is 0.
+2023-03-07 20:48:04,843 : (Logical Clock Time 33) Internal event occurred.
+2023-03-07 20:48:05,048 : (Logical Clock Time 34) Sent a message to both other machines.
+2023-03-07 20:48:05,252 : (Logical Clock Time 35) Internal event occurred.
+2023-03-07 20:48:05,457 : (Logical Clock Time 36) Internal event occurred.
+2023-03-07 20:48:05,662 : (Logical Clock Time 37) Internal event occurred.
+2023-03-07 20:48:05,864 : (Logical Clock Time 38) Received a message with logical time 38. Current queue length is 0.
+2023-03-07 20:48:06,067 : (Logical Clock Time 39) Sent a message to machine 2.
+2023-03-07 20:48:06,273 : (Logical Clock Time 40) Internal event occurred.
+2023-03-07 20:48:06,476 : (Logical Clock Time 41) Internal event occurred.
+2023-03-07 20:48:06,677 : (Logical Clock Time 42) Internal event occurred.
+2023-03-07 20:48:06,882 : (Logical Clock Time 43) Internal event occurred.
+2023-03-07 20:48:07,083 : (Logical Clock Time 44) Internal event occurred.
+2023-03-07 20:48:07,288 : (Logical Clock Time 45) Internal event occurred.
+2023-03-07 20:48:07,494 : (Logical Clock Time 46) Sent a message to machine 1.
+2023-03-07 20:48:07,695 : (Logical Clock Time 47) Internal event occurred.
+2023-03-07 20:48:07,900 : (Logical Clock Time 48) Internal event occurred.
+2023-03-07 20:48:08,105 : (Logical Clock Time 49) Internal event occurred.
+2023-03-07 20:48:08,310 : (Logical Clock Time 50) Internal event occurred.
+2023-03-07 20:48:08,510 : (Logical Clock Time 51) Internal event occurred.
+2023-03-07 20:48:08,712 : (Logical Clock Time 52) Sent a message to both other machines.
+2023-03-07 20:48:08,916 : (Logical Clock Time 53) Sent a message to machine 2.
+2023-03-07 20:48:09,117 : (Logical Clock Time 54) Received a message with logical time 53. Current queue length is 0.
+2023-03-07 20:48:09,318 : (Logical Clock Time 55) Sent a message to machine 2.
+2023-03-07 20:48:09,522 : (Logical Clock Time 56) Internal event occurred.
+2023-03-07 20:48:09,726 : (Logical Clock Time 57) Sent a message to machine 2.
+2023-03-07 20:48:09,927 : (Logical Clock Time 58) Internal event occurred.
+2023-03-07 20:48:10,132 : (Logical Clock Time 59) Sent a message to both other machines.
+2023-03-07 20:48:10,335 : (Logical Clock Time 60) Internal event occurred.
+2023-03-07 20:48:10,540 : (Logical Clock Time 61) Sent a message to both other machines.
+2023-03-07 20:48:10,743 : (Logical Clock Time 62) Sent a message to both other machines.
+2023-03-07 20:48:10,948 : (Logical Clock Time 63) Internal event occurred.
+2023-03-07 20:48:11,152 : (Logical Clock Time 64) Received a message with logical time 63. Current queue length is 0.
+2023-03-07 20:48:11,357 : (Logical Clock Time 65) Internal event occurred.
+2023-03-07 20:48:11,561 : (Logical Clock Time 66) Internal event occurred.
+2023-03-07 20:48:11,766 : (Logical Clock Time 67) Internal event occurred.
+2023-03-07 20:48:11,968 : (Logical Clock Time 68) Internal event occurred.
+2023-03-07 20:48:12,170 : (Logical Clock Time 69) Internal event occurred.
+2023-03-07 20:48:12,374 : (Logical Clock Time 70) Internal event occurred.
+2023-03-07 20:48:12,577 : (Logical Clock Time 71) Received a message with logical time 71. Current queue length is 0.
+2023-03-07 20:48:12,782 : (Logical Clock Time 72) Internal event occurred.
+2023-03-07 20:48:12,988 : (Logical Clock Time 73) Sent a message to machine 1.
+2023-03-07 20:48:13,189 : (Logical Clock Time 74) Sent a message to machine 1.
+2023-03-07 20:48:13,394 : (Logical Clock Time 75) Received a message with logical time 75. Current queue length is 0.
+2023-03-07 20:48:13,597 : (Logical Clock Time 76) Internal event occurred.
+2023-03-07 20:48:13,801 : (Logical Clock Time 77) Received a message with logical time 76. Current queue length is 0.
+2023-03-07 20:48:14,004 : (Logical Clock Time 78) Internal event occurred.
+2023-03-07 20:48:14,209 : (Logical Clock Time 79) Sent a message to machine 2.
+2023-03-07 20:48:14,414 : (Logical Clock Time 80) Sent a message to both other machines.
+2023-03-07 20:48:14,619 : (Logical Clock Time 81) Sent a message to machine 1.
+2023-03-07 20:48:14,824 : (Logical Clock Time 82) Sent a message to machine 1.
+2023-03-07 20:48:15,029 : (Logical Clock Time 83) Received a message with logical time 83. Current queue length is 0.
+2023-03-07 20:48:15,232 : (Logical Clock Time 84) Received a message with logical time 84. Current queue length is 0.
+2023-03-07 20:48:15,435 : (Logical Clock Time 85) Sent a message to machine 2.
+2023-03-07 20:48:15,638 : (Logical Clock Time 86) Sent a message to both other machines.
+2023-03-07 20:48:15,843 : (Logical Clock Time 87) Internal event occurred.
+2023-03-07 20:48:16,048 : (Logical Clock Time 88) Received a message with logical time 88. Current queue length is 0.
+2023-03-07 20:48:16,255 : (Logical Clock Time 89) Internal event occurred.
+2023-03-07 20:48:16,458 : (Logical Clock Time 90) Internal event occurred.
+2023-03-07 20:48:16,663 : (Logical Clock Time 91) Received a message with logical time 91. Current queue length is 0.
+2023-03-07 20:48:16,866 : (Logical Clock Time 92) Internal event occurred.
+2023-03-07 20:48:17,067 : (Logical Clock Time 93) Internal event occurred.
+2023-03-07 20:48:17,267 : (Logical Clock Time 94) Sent a message to machine 1.
+2023-03-07 20:48:17,472 : (Logical Clock Time 95) Internal event occurred.
+2023-03-07 20:48:17,676 : (Logical Clock Time 96) Internal event occurred.
+2023-03-07 20:48:17,880 : (Logical Clock Time 97) Received a message with logical time 96. Current queue length is 0.
+2023-03-07 20:48:18,085 : (Logical Clock Time 98) Internal event occurred.
+2023-03-07 20:48:18,286 : (Logical Clock Time 99) Internal event occurred.
+2023-03-07 20:48:18,491 : (Logical Clock Time 100) Internal event occurred.
+2023-03-07 20:48:18,697 : (Logical Clock Time 101) Sent a message to machine 2.
+2023-03-07 20:48:18,901 : (Logical Clock Time 102) Internal event occurred.
+2023-03-07 20:48:19,102 : (Logical Clock Time 103) Internal event occurred.
+2023-03-07 20:48:19,306 : (Logical Clock Time 104) Internal event occurred.
+2023-03-07 20:48:19,510 : (Logical Clock Time 105) Internal event occurred.
+2023-03-07 20:48:19,715 : (Logical Clock Time 106) Internal event occurred.
+2023-03-07 20:48:19,918 : (Logical Clock Time 107) Internal event occurred.
+2023-03-07 20:48:20,122 : (Logical Clock Time 108) Internal event occurred.
+2023-03-07 20:48:20,328 : (Logical Clock Time 109) Sent a message to machine 2.
+2023-03-07 20:48:20,529 : (Logical Clock Time 110) Sent a message to both other machines.
+2023-03-07 20:48:20,733 : (Logical Clock Time 111) Internal event occurred.
+2023-03-07 20:48:20,938 : (Logical Clock Time 112) Sent a message to machine 1.
+2023-03-07 20:48:21,142 : (Logical Clock Time 113) Sent a message to both other machines.
+2023-03-07 20:48:21,343 : (Logical Clock Time 114) Sent a message to machine 2.
+2023-03-07 20:48:21,545 : (Logical Clock Time 115) Sent a message to machine 1.
+2023-03-07 20:48:21,750 : (Logical Clock Time 116) Sent a message to machine 2.
+2023-03-07 20:48:21,952 : (Logical Clock Time 117) Sent a message to machine 2.
+2023-03-07 20:48:22,157 : (Logical Clock Time 118) Sent a message to machine 1.
+2023-03-07 20:48:22,358 : (Logical Clock Time 119) Sent a message to machine 2.
+2023-03-07 20:48:22,563 : (Logical Clock Time 120) Internal event occurred.
+2023-03-07 20:48:22,767 : (Logical Clock Time 121) Internal event occurred.
+2023-03-07 20:48:22,972 : (Logical Clock Time 122) Internal event occurred.
+2023-03-07 20:48:23,176 : (Logical Clock Time 123) Internal event occurred.
+2023-03-07 20:48:23,381 : (Logical Clock Time 124) Sent a message to machine 2.
+2023-03-07 20:48:23,584 : (Logical Clock Time 125) Sent a message to machine 2.
+2023-03-07 20:48:23,789 : (Logical Clock Time 126) Sent a message to machine 1.
+2023-03-07 20:48:23,993 : (Logical Clock Time 127) Received a message with logical time 126. Current queue length is 0.
+2023-03-07 20:48:24,195 : (Logical Clock Time 128) Sent a message to both other machines.
+2023-03-07 20:48:24,399 : (Logical Clock Time 129) Internal event occurred.
+2023-03-07 20:48:24,599 : (Logical Clock Time 130) Internal event occurred.
+2023-03-07 20:48:24,804 : (Logical Clock Time 131) Sent a message to machine 1.
+2023-03-07 20:48:25,009 : (Logical Clock Time 132) Internal event occurred.
+2023-03-07 20:48:25,210 : (Logical Clock Time 133) Sent a message to machine 2.
+2023-03-07 20:48:25,415 : (Logical Clock Time 134) Sent a message to machine 1.
+2023-03-07 20:48:25,618 : (Logical Clock Time 135) Internal event occurred.
+2023-03-07 20:48:25,822 : (Logical Clock Time 136) Internal event occurred.
+2023-03-07 20:48:26,027 : (Logical Clock Time 137) Sent a message to machine 1.
+2023-03-07 20:48:26,230 : (Logical Clock Time 138) Received a message with logical time 137. Current queue length is 0.
+2023-03-07 20:48:26,430 : (Logical Clock Time 139) Internal event occurred.
+2023-03-07 20:48:26,634 : (Logical Clock Time 140) Internal event occurred.
+2023-03-07 20:48:26,838 : (Logical Clock Time 141) Internal event occurred.
+2023-03-07 20:48:27,044 : (Logical Clock Time 142) Sent a message to machine 1.
+2023-03-07 20:48:27,248 : (Logical Clock Time 143) Received a message with logical time 142. Current queue length is 0.
+2023-03-07 20:48:27,453 : (Logical Clock Time 144) Internal event occurred.
+2023-03-07 20:48:27,658 : (Logical Clock Time 145) Internal event occurred.
+2023-03-07 20:48:27,861 : (Logical Clock Time 146) Received a message with logical time 145. Current queue length is 0.
+2023-03-07 20:48:28,063 : (Logical Clock Time 147) Sent a message to machine 1.
+2023-03-07 20:48:28,268 : (Logical Clock Time 148) Internal event occurred.
+2023-03-07 20:48:28,472 : (Logical Clock Time 149) Internal event occurred.
+2023-03-07 20:48:28,678 : (Logical Clock Time 150) Sent a message to machine 2.
+2023-03-07 20:48:28,883 : (Logical Clock Time 151) Sent a message to machine 2.
+2023-03-07 20:48:29,085 : (Logical Clock Time 152) Internal event occurred.
+2023-03-07 20:48:29,290 : (Logical Clock Time 153) Internal event occurred.
+2023-03-07 20:48:29,497 : (Logical Clock Time 154) Received a message with logical time 153. Current queue length is 0.
+2023-03-07 20:48:29,699 : (Logical Clock Time 155) Internal event occurred.
+2023-03-07 20:48:29,902 : (Logical Clock Time 156) Sent a message to machine 1.
+2023-03-07 20:48:30,102 : (Logical Clock Time 157) Received a message with logical time 156. Current queue length is 0.
+2023-03-07 20:48:30,303 : (Logical Clock Time 158) Sent a message to machine 2.
+2023-03-07 20:48:30,508 : (Logical Clock Time 159) Sent a message to machine 1.
+2023-03-07 20:48:30,710 : (Logical Clock Time 160) Internal event occurred.
+2023-03-07 20:48:30,915 : (Logical Clock Time 161) Internal event occurred.
+2023-03-07 20:48:31,120 : (Logical Clock Time 162) Internal event occurred.
+2023-03-07 20:48:31,320 : (Logical Clock Time 163) Internal event occurred.
+2023-03-07 20:48:31,528 : (Logical Clock Time 164) Internal event occurred.
+2023-03-07 20:48:31,731 : (Logical Clock Time 165) Internal event occurred.
+2023-03-07 20:48:31,936 : (Logical Clock Time 166) Received a message with logical time 165. Current queue length is 0.
+2023-03-07 20:48:32,138 : (Logical Clock Time 167) Internal event occurred.
+2023-03-07 20:48:32,343 : (Logical Clock Time 168) Internal event occurred.
+2023-03-07 20:48:32,546 : (Logical Clock Time 169) Sent a message to machine 1.
+2023-03-07 20:48:32,749 : (Logical Clock Time 170) Internal event occurred.
+2023-03-07 20:48:32,954 : (Logical Clock Time 171) Sent a message to both other machines.
+2023-03-07 20:48:33,154 : (Logical Clock Time 172) Sent a message to machine 1.
+2023-03-07 20:48:33,355 : (Logical Clock Time 173) Internal event occurred.
+2023-03-07 20:48:33,557 : (Logical Clock Time 174) Internal event occurred.
+2023-03-07 20:48:33,763 : (Logical Clock Time 175) Received a message with logical time 174. Current queue length is 0.
+2023-03-07 20:48:33,968 : (Logical Clock Time 176) Internal event occurred.
+2023-03-07 20:48:34,173 : (Logical Clock Time 177) Internal event occurred.
+2023-03-07 20:48:34,379 : (Logical Clock Time 178) Internal event occurred.
+2023-03-07 20:48:34,585 : (Logical Clock Time 179) Sent a message to machine 1.
+2023-03-07 20:48:34,800 : (Logical Clock Time 180) Internal event occurred.
+2023-03-07 20:48:35,008 : (Logical Clock Time 181) Sent a message to machine 2.
+2023-03-07 20:48:35,213 : (Logical Clock Time 182) Internal event occurred.
+2023-03-07 20:48:35,418 : (Logical Clock Time 183) Sent a message to machine 2.
+2023-03-07 20:48:35,626 : (Logical Clock Time 184) Sent a message to machine 1.
+2023-03-07 20:48:35,830 : (Logical Clock Time 185) Received a message with logical time 184. Current queue length is 0.
+2023-03-07 20:48:36,037 : (Logical Clock Time 186) Received a message with logical time 185. Current queue length is 0.
+2023-03-07 20:48:36,239 : (Logical Clock Time 187) Received a message with logical time 186. Current queue length is 0.
+2023-03-07 20:48:36,444 : (Logical Clock Time 188) Received a message with logical time 187. Current queue length is 0.
+2023-03-07 20:48:36,644 : (Logical Clock Time 189) Internal event occurred.
+2023-03-07 20:48:36,850 : (Logical Clock Time 190) Sent a message to both other machines.
+2023-03-07 20:48:37,051 : (Logical Clock Time 191) Internal event occurred.
+2023-03-07 20:48:37,257 : (Logical Clock Time 192) Sent a message to machine 2.
+2023-03-07 20:48:37,461 : (Logical Clock Time 193) Sent a message to machine 2.
+2023-03-07 20:48:37,667 : (Logical Clock Time 194) Internal event occurred.
+2023-03-07 20:48:37,868 : (Logical Clock Time 195) Internal event occurred.
+2023-03-07 20:48:38,072 : (Logical Clock Time 196) Internal event occurred.
+2023-03-07 20:48:38,277 : (Logical Clock Time 197) Received a message with logical time 196. Current queue length is 0.
+2023-03-07 20:48:38,477 : (Logical Clock Time 198) Sent a message to machine 1.
+2023-03-07 20:48:38,682 : (Logical Clock Time 199) Received a message with logical time 198. Current queue length is 0.
+2023-03-07 20:48:38,885 : (Logical Clock Time 200) Received a message with logical time 199. Current queue length is 0.
+2023-03-07 20:48:39,090 : (Logical Clock Time 201) Internal event occurred.
+2023-03-07 20:48:39,295 : (Logical Clock Time 202) Received a message with logical time 201. Current queue length is 0.
+2023-03-07 20:48:39,497 : (Logical Clock Time 203) Sent a message to both other machines.
+2023-03-07 20:48:39,703 : (Logical Clock Time 204) Sent a message to machine 1.
+2023-03-07 20:48:39,904 : (Logical Clock Time 205) Internal event occurred.
+2023-03-07 20:48:40,109 : (Logical Clock Time 206) Received a message with logical time 205. Current queue length is 0.
+2023-03-07 20:48:40,314 : (Logical Clock Time 207) Internal event occurred.
+2023-03-07 20:48:40,518 : (Logical Clock Time 208) Sent a message to both other machines.
+2023-03-07 20:48:40,723 : (Logical Clock Time 209) Internal event occurred.
+2023-03-07 20:48:40,928 : (Logical Clock Time 210) Sent a message to both other machines.
+2023-03-07 20:48:41,129 : (Logical Clock Time 211) Sent a message to machine 2.
+2023-03-07 20:48:41,332 : (Logical Clock Time 212) Internal event occurred.
+2023-03-07 20:48:41,538 : (Logical Clock Time 213) Sent a message to machine 1.
+2023-03-07 20:48:41,738 : (Logical Clock Time 214) Internal event occurred.
+2023-03-07 20:48:41,944 : (Logical Clock Time 215) Internal event occurred.
+2023-03-07 20:48:42,149 : (Logical Clock Time 216) Internal event occurred.
+2023-03-07 20:48:42,354 : (Logical Clock Time 217) Internal event occurred.
+2023-03-07 20:48:42,555 : (Logical Clock Time 218) Internal event occurred.
+2023-03-07 20:48:42,760 : (Logical Clock Time 219) Internal event occurred.
+2023-03-07 20:48:42,965 : (Logical Clock Time 220) Internal event occurred.
+2023-03-07 20:48:43,170 : (Logical Clock Time 221) Internal event occurred.
+2023-03-07 20:48:43,375 : (Logical Clock Time 222) Internal event occurred.
+2023-03-07 20:48:43,581 : (Logical Clock Time 223) Internal event occurred.
+2023-03-07 20:48:43,786 : (Logical Clock Time 224) Internal event occurred.
+2023-03-07 20:48:43,991 : (Logical Clock Time 225) Received a message with logical time 224. Current queue length is 0.
+2023-03-07 20:48:44,196 : (Logical Clock Time 226) Internal event occurred.
+2023-03-07 20:48:44,401 : (Logical Clock Time 227) Received a message with logical time 226. Current queue length is 0.
+2023-03-07 20:48:44,606 : (Logical Clock Time 228) Sent a message to machine 2.
+2023-03-07 20:48:44,814 : (Logical Clock Time 229) Internal event occurred.
+2023-03-07 20:48:45,019 : (Logical Clock Time 230) Sent a message to both other machines.
+2023-03-07 20:48:45,221 : (Logical Clock Time 231) Received a message with logical time 230. Current queue length is 0.
+2023-03-07 20:48:45,426 : (Logical Clock Time 232) Internal event occurred.
+2023-03-07 20:48:45,631 : (Logical Clock Time 233) Internal event occurred.
+2023-03-07 20:48:45,841 : (Logical Clock Time 234) Internal event occurred.
+2023-03-07 20:48:46,048 : (Logical Clock Time 235) Internal event occurred.
+2023-03-07 20:48:46,254 : (Logical Clock Time 236) Internal event occurred.
+2023-03-07 20:48:46,456 : (Logical Clock Time 237) Received a message with logical time 236. Current queue length is 0.
+2023-03-07 20:48:46,662 : (Logical Clock Time 238) Internal event occurred.
+2023-03-07 20:48:46,864 : (Logical Clock Time 239) Sent a message to machine 1.
+2023-03-07 20:48:47,064 : (Logical Clock Time 240) Received a message with logical time 239. Current queue length is 0.
+2023-03-07 20:48:47,267 : (Logical Clock Time 241) Internal event occurred.
+2023-03-07 20:48:47,472 : (Logical Clock Time 242) Internal event occurred.
+2023-03-07 20:48:47,677 : (Logical Clock Time 243) Sent a message to both other machines.
+2023-03-07 20:48:47,884 : (Logical Clock Time 244) Internal event occurred.
+2023-03-07 20:48:48,084 : (Logical Clock Time 245) Internal event occurred.
+2023-03-07 20:48:48,284 : (Logical Clock Time 246) Internal event occurred.
+2023-03-07 20:48:48,490 : (Logical Clock Time 247) Internal event occurred.
+2023-03-07 20:48:48,691 : (Logical Clock Time 248) Internal event occurred.
+2023-03-07 20:48:48,893 : (Logical Clock Time 249) Internal event occurred.
+2023-03-07 20:48:49,098 : (Logical Clock Time 250) Received a message with logical time 249. Current queue length is 0.
+2023-03-07 20:48:49,304 : (Logical Clock Time 251) Internal event occurred.
+2023-03-07 20:48:49,509 : (Logical Clock Time 252) Internal event occurred.
+2023-03-07 20:48:49,714 : (Logical Clock Time 253) Internal event occurred.
+2023-03-07 20:48:49,920 : (Logical Clock Time 254) Internal event occurred.
+2023-03-07 20:48:50,124 : (Logical Clock Time 255) Internal event occurred.
+2023-03-07 20:48:50,330 : (Logical Clock Time 256) Internal event occurred.
+2023-03-07 20:48:50,532 : (Logical Clock Time 257) Sent a message to both other machines.
+2023-03-07 20:48:50,739 : (Logical Clock Time 258) Internal event occurred.
+2023-03-07 20:48:50,940 : (Logical Clock Time 259) Internal event occurred.
+2023-03-07 20:48:51,143 : (Logical Clock Time 260) Internal event occurred.
+2023-03-07 20:48:51,348 : (Logical Clock Time 261) Internal event occurred.
+2023-03-07 20:48:51,550 : (Logical Clock Time 262) Sent a message to both other machines.
+2023-03-07 20:48:51,755 : (Logical Clock Time 263) Internal event occurred.
+2023-03-07 20:48:51,961 : (Logical Clock Time 264) Sent a message to machine 1.
+2023-03-07 20:48:52,163 : (Logical Clock Time 265) Sent a message to machine 2.
+2023-03-07 20:48:52,369 : (Logical Clock Time 266) Internal event occurred.
+2023-03-07 20:48:52,572 : (Logical Clock Time 267) Internal event occurred.
+2023-03-07 20:48:52,779 : (Logical Clock Time 268) Received a message with logical time 267. Current queue length is 0.
+2023-03-07 20:48:52,984 : (Logical Clock Time 269) Internal event occurred.
+2023-03-07 20:48:53,189 : (Logical Clock Time 270) Internal event occurred.
+2023-03-07 20:48:53,393 : (Logical Clock Time 271) Internal event occurred.
+2023-03-07 20:48:53,597 : (Logical Clock Time 272) Internal event occurred.
+2023-03-07 20:48:53,803 : (Logical Clock Time 273) Sent a message to machine 1.
+2023-03-07 20:48:54,005 : (Logical Clock Time 274) Sent a message to machine 1.
+2023-03-07 20:48:54,206 : (Logical Clock Time 275) Sent a message to machine 2.
+2023-03-07 20:48:54,412 : (Logical Clock Time 276) Internal event occurred.
+2023-03-07 20:48:54,616 : (Logical Clock Time 277) Sent a message to both other machines.
+2023-03-07 20:48:54,818 : (Logical Clock Time 278) Internal event occurred.
+2023-03-07 20:48:55,024 : (Logical Clock Time 279) Received a message with logical time 278. Current queue length is 0.
+2023-03-07 20:48:55,228 : (Logical Clock Time 280) Received a message with logical time 279. Current queue length is 0.
+2023-03-07 20:48:55,432 : (Logical Clock Time 281) Internal event occurred.
+2023-03-07 20:48:55,635 : (Logical Clock Time 282) Internal event occurred.
+2023-03-07 20:48:55,838 : (Logical Clock Time 283) Internal event occurred.
+2023-03-07 20:48:56,043 : (Logical Clock Time 284) Internal event occurred.
+2023-03-07 20:48:56,248 : (Logical Clock Time 285) Sent a message to both other machines.
+2023-03-07 20:48:56,454 : (Logical Clock Time 286) Internal event occurred.
+2023-03-07 20:48:56,659 : (Logical Clock Time 287) Sent a message to machine 1.
+2023-03-07 20:48:56,863 : (Logical Clock Time 288) Sent a message to both other machines.
+2023-03-07 20:48:57,069 : (Logical Clock Time 289) Sent a message to both other machines.
+2023-03-07 20:48:57,272 : (Logical Clock Time 290) Sent a message to both other machines.
+2023-03-07 20:48:57,476 : (Logical Clock Time 291) Sent a message to both other machines.
+2023-03-07 20:48:57,678 : (Logical Clock Time 292) Internal event occurred.
+2023-03-07 20:48:57,882 : (Logical Clock Time 293) Sent a message to machine 2.
+2023-03-07 20:48:58,084 : (Logical Clock Time 294) Internal event occurred.
+2023-03-07 20:48:58,285 : (Logical Clock Time 295) Sent a message to machine 1.
+2023-03-07 20:48:58,486 : (Logical Clock Time 296) Internal event occurred.
+2023-03-07 20:48:58,691 : (Logical Clock Time 297) Internal event occurred.
+2023-03-07 20:48:58,893 : (Logical Clock Time 298) Internal event occurred.
+2023-03-07 20:48:59,098 : (Logical Clock Time 299) Internal event occurred.
+2023-03-07 20:48:59,303 : (Logical Clock Time 300) Internal event occurred.
+2023-03-07 20:48:59,508 : (Logical Clock Time 301) Internal event occurred.
+2023-03-07 20:48:59,714 : (Logical Clock Time 302) Internal event occurred.
+2023-03-07 20:48:59,917 : (Logical Clock Time 303) Sent a message to machine 2.
+2023-03-07 20:49:00,122 : (Logical Clock Time 304) Internal event occurred.
+2023-03-07 20:49:00,329 : (Logical Clock Time 305) Sent a message to both other machines.
+2023-03-07 20:49:00,534 : (Logical Clock Time 306) Internal event occurred.
+2023-03-07 20:49:00,736 : (Logical Clock Time 307) Internal event occurred.
+2023-03-07 20:49:00,939 : (Logical Clock Time 308) Sent a message to machine 1.
+2023-03-07 20:49:01,143 : (Logical Clock Time 309) Internal event occurred.
+2023-03-07 20:49:01,347 : (Logical Clock Time 310) Internal event occurred.
+2023-03-07 20:49:01,553 : (Logical Clock Time 311) Internal event occurred.
+2023-03-07 20:49:01,755 : (Logical Clock Time 312) Internal event occurred.
+2023-03-07 20:49:01,959 : (Logical Clock Time 313) Received a message with logical time 312. Current queue length is 0.
+2023-03-07 20:49:02,164 : (Logical Clock Time 314) Internal event occurred.
+2023-03-07 20:49:02,371 : (Logical Clock Time 315) Sent a message to machine 1.
+2023-03-07 20:49:02,576 : (Logical Clock Time 316) Received a message with logical time 315. Current queue length is 0.
+2023-03-07 20:49:02,781 : (Logical Clock Time 317) Received a message with logical time 316. Current queue length is 0.
+2023-03-07 20:49:02,985 : (Logical Clock Time 318) Internal event occurred.
+2023-03-07 20:49:03,190 : (Logical Clock Time 319) Received a message with logical time 318. Current queue length is 0.
+2023-03-07 20:49:03,393 : (Logical Clock Time 320) Sent a message to machine 1.
+2023-03-07 20:49:03,597 : (Logical Clock Time 321) Internal event occurred.
+2023-03-07 20:49:03,804 : (Logical Clock Time 322) Sent a message to machine 2.
+2023-03-07 20:49:04,005 : (Logical Clock Time 323) Sent a message to both other machines.
+2023-03-07 20:49:04,208 : (Logical Clock Time 324) Sent a message to both other machines.
+2023-03-07 20:49:04,409 : (Logical Clock Time 325) Sent a message to both other machines.
+2023-03-07 20:49:04,611 : (Logical Clock Time 326) Internal event occurred.
+2023-03-07 20:49:04,816 : (Logical Clock Time 327) Internal event occurred.
+2023-03-07 20:49:05,017 : (Logical Clock Time 328) Internal event occurred.
+2023-03-07 20:49:05,220 : (Logical Clock Time 329) Sent a message to machine 1.
+2023-03-07 20:49:05,424 : (Logical Clock Time 330) Internal event occurred.
+2023-03-07 20:49:05,630 : (Logical Clock Time 331) Internal event occurred.
+2023-03-07 20:49:05,835 : (Logical Clock Time 332) Received a message with logical time 331. Current queue length is 0.
+2023-03-07 20:49:06,040 : (Logical Clock Time 333) Sent a message to machine 2.
+2023-03-07 20:49:06,248 : (Logical Clock Time 334) Sent a message to both other machines.
+2023-03-07 20:49:06,454 : (Logical Clock Time 335) Sent a message to machine 2.
+2023-03-07 20:49:06,656 : (Logical Clock Time 336) Internal event occurred.
+2023-03-07 20:49:06,863 : (Logical Clock Time 337) Internal event occurred.
+2023-03-07 20:49:07,064 : (Logical Clock Time 338) Internal event occurred.
+2023-03-07 20:49:07,271 : (Logical Clock Time 339) Internal event occurred.
+2023-03-07 20:49:07,474 : (Logical Clock Time 340) Internal event occurred.
+2023-03-07 20:49:07,677 : (Logical Clock Time 341) Internal event occurred.
+2023-03-07 20:49:07,882 : (Logical Clock Time 342) Internal event occurred.
+2023-03-07 20:49:08,083 : (Logical Clock Time 343) Sent a message to both other machines.
+2023-03-07 20:49:08,288 : (Logical Clock Time 344) Internal event occurred.
+2023-03-07 20:49:08,494 : (Logical Clock Time 345) Received a message with logical time 345. Current queue length is 0.
+2023-03-07 20:49:08,696 : (Logical Clock Time 346) Internal event occurred.
+2023-03-07 20:49:08,898 : (Logical Clock Time 347) Internal event occurred.
+2023-03-07 20:49:09,101 : (Logical Clock Time 348) Internal event occurred.
+2023-03-07 20:49:09,306 : (Logical Clock Time 349) Internal event occurred.
+2023-03-07 20:49:09,510 : (Logical Clock Time 350) Received a message with logical time 349. Current queue length is 0.
+2023-03-07 20:49:09,715 : (Logical Clock Time 351) Internal event occurred.
+2023-03-07 20:49:09,918 : (Logical Clock Time 352) Sent a message to both other machines.
+2023-03-07 20:49:10,122 : (Logical Clock Time 353) Internal event occurred.
+2023-03-07 20:49:10,326 : (Logical Clock Time 354) Sent a message to machine 1.
+2023-03-07 20:49:10,527 : (Logical Clock Time 355) Internal event occurred.
+2023-03-07 20:49:10,732 : (Logical Clock Time 356) Internal event occurred.
+2023-03-07 20:49:10,932 : (Logical Clock Time 357) Internal event occurred.
+2023-03-07 20:49:11,136 : (Logical Clock Time 358) Internal event occurred.
+2023-03-07 20:49:11,341 : (Logical Clock Time 359) Sent a message to machine 2.
+2023-03-07 20:49:11,546 : (Logical Clock Time 360) Internal event occurred.
+2023-03-07 20:49:11,751 : (Logical Clock Time 361) Internal event occurred.
+2023-03-07 20:49:11,956 : (Logical Clock Time 362) Sent a message to both other machines.
+2023-03-07 20:49:12,162 : (Logical Clock Time 363) Internal event occurred.
+2023-03-07 20:49:12,368 : (Logical Clock Time 364) Sent a message to machine 2.
+2023-03-07 20:49:12,573 : (Logical Clock Time 365) Sent a message to machine 2.
+2023-03-07 20:49:12,778 : (Logical Clock Time 366) Internal event occurred.
+2023-03-07 20:49:12,979 : (Logical Clock Time 367) Internal event occurred.
+2023-03-07 20:49:13,184 : (Logical Clock Time 368) Sent a message to machine 1.
+2023-03-07 20:49:13,388 : (Logical Clock Time 369) Internal event occurred.
+2023-03-07 20:49:13,590 : (Logical Clock Time 370) Sent a message to machine 2.
+2023-03-07 20:49:13,791 : (Logical Clock Time 371) Internal event occurred.
+2023-03-07 20:49:13,994 : (Logical Clock Time 372) Internal event occurred.
+2023-03-07 20:49:14,200 : (Logical Clock Time 373) Internal event occurred.
+2023-03-07 20:49:14,405 : (Logical Clock Time 374) Internal event occurred.
+2023-03-07 20:49:14,606 : (Logical Clock Time 375) Internal event occurred.
+2023-03-07 20:49:14,812 : (Logical Clock Time 376) Sent a message to machine 1.
+2023-03-07 20:49:15,015 : (Logical Clock Time 377) Internal event occurred.
+2023-03-07 20:49:15,221 : (Logical Clock Time 378) Received a message with logical time 377. Current queue length is 0.
+2023-03-07 20:49:15,424 : (Logical Clock Time 379) Sent a message to machine 2.
+2023-03-07 20:49:15,624 : (Logical Clock Time 380) Received a message with logical time 379. Current queue length is 0.
+2023-03-07 20:49:15,826 : (Logical Clock Time 381) Sent a message to machine 2.
+2023-03-07 20:49:16,030 : (Logical Clock Time 382) Sent a message to machine 2.
+2023-03-07 20:49:16,232 : (Logical Clock Time 383) Sent a message to machine 1.
+2023-03-07 20:49:16,438 : (Logical Clock Time 384) Sent a message to machine 1.
+2023-03-07 20:49:16,640 : (Logical Clock Time 385) Received a message with logical time 384. Current queue length is 0.
+2023-03-07 20:49:16,848 : (Logical Clock Time 386) Sent a message to both other machines.
+2023-03-07 20:49:17,055 : (Logical Clock Time 387) Internal event occurred.
+2023-03-07 20:49:17,260 : (Logical Clock Time 388) Internal event occurred.
+2023-03-07 20:49:17,466 : (Logical Clock Time 389) Sent a message to machine 2.
+2023-03-07 20:49:17,670 : (Logical Clock Time 390) Internal event occurred.
+2023-03-07 20:49:17,871 : (Logical Clock Time 391) Internal event occurred.
+2023-03-07 20:49:18,077 : (Logical Clock Time 392) Sent a message to both other machines.
+2023-03-07 20:49:18,282 : (Logical Clock Time 393) Internal event occurred.
+2023-03-07 20:49:18,489 : (Logical Clock Time 394) Internal event occurred.
+2023-03-07 20:49:18,691 : (Logical Clock Time 395) Internal event occurred.
+2023-03-07 20:49:18,896 : (Logical Clock Time 396) Sent a message to machine 1.
+2023-03-07 20:49:19,099 : (Logical Clock Time 397) Sent a message to machine 1.
+2023-03-07 20:49:19,301 : (Logical Clock Time 398) Internal event occurred.
+2023-03-07 20:49:19,504 : (Logical Clock Time 399) Internal event occurred.
+2023-03-07 20:49:19,706 : (Logical Clock Time 400) Sent a message to both other machines.
+2023-03-07 20:49:19,911 : (Logical Clock Time 401) Internal event occurred.
+2023-03-07 20:49:20,111 : (Logical Clock Time 402) Sent a message to machine 1.
+2023-03-07 20:49:20,316 : (Logical Clock Time 403) Internal event occurred.
+2023-03-07 20:49:20,518 : (Logical Clock Time 404) Internal event occurred.
+2023-03-07 20:49:20,725 : (Logical Clock Time 405) Internal event occurred.
+2023-03-07 20:49:20,931 : (Logical Clock Time 406) Sent a message to machine 1.
+2023-03-07 20:49:21,138 : (Logical Clock Time 407) Internal event occurred.
+2023-03-07 20:49:21,347 : (Logical Clock Time 408) Internal event occurred.
+2023-03-07 20:49:21,552 : (Logical Clock Time 409) Sent a message to machine 2.
+2023-03-07 20:49:21,752 : (Logical Clock Time 410) Sent a message to machine 1.
+2023-03-07 20:49:21,954 : (Logical Clock Time 411) Sent a message to machine 1.
+2023-03-07 20:49:22,159 : (Logical Clock Time 412) Internal event occurred.
+2023-03-07 20:49:22,360 : (Logical Clock Time 413) Sent a message to both other machines.
+2023-03-07 20:49:22,561 : (Logical Clock Time 414) Internal event occurred.
+2023-03-07 20:49:22,766 : (Logical Clock Time 415) Internal event occurred.
+2023-03-07 20:49:22,971 : (Logical Clock Time 416) Sent a message to machine 2.
+2023-03-07 20:49:23,176 : (Logical Clock Time 417) Internal event occurred.
+2023-03-07 20:49:23,380 : (Logical Clock Time 418) Internal event occurred.
+2023-03-07 20:49:23,587 : (Logical Clock Time 419) Internal event occurred.
+2023-03-07 20:49:23,792 : (Logical Clock Time 420) Received a message with logical time 419. Current queue length is 0.
+2023-03-07 20:49:23,997 : (Logical Clock Time 421) Sent a message to machine 1.
+2023-03-07 20:49:24,204 : (Logical Clock Time 422) Received a message with logical time 421. Current queue length is 0.
+2023-03-07 20:49:24,409 : (Logical Clock Time 423) Received a message with logical time 422. Current queue length is 0.
+2023-03-07 20:49:24,616 : (Logical Clock Time 424) Sent a message to machine 1.
+2023-03-07 20:49:24,821 : (Logical Clock Time 425) Internal event occurred.
+2023-03-07 20:49:25,026 : (Logical Clock Time 426) Sent a message to machine 1.
+2023-03-07 20:49:25,230 : (Logical Clock Time 427) Internal event occurred.
+2023-03-07 20:49:25,437 : (Logical Clock Time 428) Internal event occurred.
+2023-03-07 20:49:25,642 : (Logical Clock Time 429) Received a message with logical time 428. Current queue length is 0.
+2023-03-07 20:49:25,846 : (Logical Clock Time 430) Internal event occurred.
+2023-03-07 20:49:26,052 : (Logical Clock Time 431) Internal event occurred.
+2023-03-07 20:49:26,255 : (Logical Clock Time 432) Received a message with logical time 432. Current queue length is 0.
+2023-03-07 20:49:26,460 : (Logical Clock Time 433) Internal event occurred.
+2023-03-07 20:49:26,665 : (Logical Clock Time 434) Internal event occurred.
+2023-03-07 20:49:26,870 : (Logical Clock Time 435) Internal event occurred.
+2023-03-07 20:49:27,076 : (Logical Clock Time 436) Received a message with logical time 435. Current queue length is 0.
+2023-03-07 20:49:27,278 : (Logical Clock Time 437) Sent a message to machine 1.
+2023-03-07 20:49:27,480 : (Logical Clock Time 438) Internal event occurred.
+2023-03-07 20:49:27,681 : (Logical Clock Time 439) Internal event occurred.
+2023-03-07 20:49:27,884 : (Logical Clock Time 440) Internal event occurred.
+2023-03-07 20:49:28,089 : (Logical Clock Time 441) Internal event occurred.
+2023-03-07 20:49:28,294 : (Logical Clock Time 442) Internal event occurred.
+2023-03-07 20:49:28,496 : (Logical Clock Time 443) Sent a message to both other machines.
+2023-03-07 20:49:28,696 : (Logical Clock Time 444) Internal event occurred.
+2023-03-07 20:49:28,901 : (Logical Clock Time 445) Received a message with logical time 444. Current queue length is 0.
+2023-03-07 20:49:29,107 : (Logical Clock Time 446) Sent a message to machine 2.
+2023-03-07 20:49:29,312 : (Logical Clock Time 447) Internal event occurred.
+2023-03-07 20:49:29,513 : (Logical Clock Time 448) Sent a message to machine 1.
+2023-03-07 20:49:29,724 : (Logical Clock Time 449) Sent a message to machine 2.
+2023-03-07 20:49:29,929 : (Logical Clock Time 450) Internal event occurred.
+2023-03-07 20:49:30,131 : (Logical Clock Time 451) Received a message with logical time 450. Current queue length is 0.
+2023-03-07 20:49:30,337 : (Logical Clock Time 452) Internal event occurred.
+2023-03-07 20:49:30,540 : (Logical Clock Time 453) Received a message with logical time 452. Current queue length is 0.
+2023-03-07 20:49:30,745 : (Logical Clock Time 454) Internal event occurred.
+2023-03-07 20:49:30,946 : (Logical Clock Time 455) Internal event occurred.
+2023-03-07 20:49:31,151 : (Logical Clock Time 456) Received a message with logical time 455. Current queue length is 0.
+2023-03-07 20:49:31,356 : (Logical Clock Time 457) Internal event occurred.
+2023-03-07 20:49:31,558 : (Logical Clock Time 458) Internal event occurred.
+2023-03-07 20:49:31,763 : (Logical Clock Time 459) Internal event occurred.
+2023-03-07 20:49:31,965 : (Logical Clock Time 460) Internal event occurred.
+2023-03-07 20:49:32,171 : (Logical Clock Time 461) Internal event occurred.
+2023-03-07 20:49:32,379 : (Logical Clock Time 462) Internal event occurred.
+2023-03-07 20:49:32,579 : (Logical Clock Time 463) Internal event occurred.
+2023-03-07 20:49:32,784 : (Logical Clock Time 464) Internal event occurred.
+2023-03-07 20:49:32,988 : (Logical Clock Time 465) Internal event occurred.
+2023-03-07 20:49:33,194 : (Logical Clock Time 466) Sent a message to machine 1.
+2023-03-07 20:49:33,398 : (Logical Clock Time 467) Internal event occurred.
+2023-03-07 20:49:33,601 : (Logical Clock Time 468) Received a message with logical time 467. Current queue length is 0.
+2023-03-07 20:49:33,805 : (Logical Clock Time 469) Internal event occurred.
+2023-03-07 20:49:34,010 : (Logical Clock Time 470) Received a message with logical time 470. Current queue length is 0.
+2023-03-07 20:49:34,215 : (Logical Clock Time 471) Sent a message to both other machines.
+2023-03-07 20:49:34,416 : (Logical Clock Time 472) Internal event occurred.
+2023-03-07 20:49:34,618 : (Logical Clock Time 473) Sent a message to machine 1.
+2023-03-07 20:49:34,823 : (Logical Clock Time 474) Received a message with logical time 473. Current queue length is 0.
+2023-03-07 20:49:35,028 : (Logical Clock Time 475) Internal event occurred.
+2023-03-07 20:49:35,234 : (Logical Clock Time 476) Internal event occurred.
+2023-03-07 20:49:35,438 : (Logical Clock Time 477) Internal event occurred.
+2023-03-07 20:49:35,642 : (Logical Clock Time 478) Sent a message to both other machines.
+2023-03-07 20:49:35,847 : (Logical Clock Time 479) Internal event occurred.
+2023-03-07 20:49:36,051 : (Logical Clock Time 480) Sent a message to both other machines.
+2023-03-07 20:49:36,255 : (Logical Clock Time 481) Internal event occurred.
+2023-03-07 20:49:36,456 : (Logical Clock Time 482) Internal event occurred.
+2023-03-07 20:49:36,659 : (Logical Clock Time 483) Sent a message to machine 2.
+2023-03-07 20:49:36,864 : (Logical Clock Time 484) Internal event occurred.
+2023-03-07 20:49:37,067 : (Logical Clock Time 485) Internal event occurred.
+2023-03-07 20:49:37,268 : (Logical Clock Time 486) Sent a message to both other machines.
+2023-03-07 20:49:37,472 : (Logical Clock Time 487) Internal event occurred.
+2023-03-07 20:49:37,676 : (Logical Clock Time 488) Internal event occurred.
+2023-03-07 20:49:37,882 : (Logical Clock Time 489) Received a message with logical time 489. Current queue length is 0.
+2023-03-07 20:49:38,086 : (Logical Clock Time 490) Received a message with logical time 490. Current queue length is 0.
+2023-03-07 20:49:38,289 : (Logical Clock Time 491) Internal event occurred.
+2023-03-07 20:49:38,495 : (Logical Clock Time 492) Internal event occurred.
+2023-03-07 20:49:38,698 : (Logical Clock Time 493) Internal event occurred.
+2023-03-07 20:49:38,903 : (Logical Clock Time 494) Internal event occurred.
+2023-03-07 20:49:39,108 : (Logical Clock Time 495) Internal event occurred.
+2023-03-07 20:49:39,313 : (Logical Clock Time 496) Sent a message to machine 1.
+2023-03-07 20:49:39,517 : (Logical Clock Time 497) Internal event occurred.
+2023-03-07 20:49:39,718 : (Logical Clock Time 498) Internal event occurred.
+2023-03-07 20:49:39,921 : (Logical Clock Time 499) Internal event occurred.
+2023-03-07 20:49:40,126 : (Logical Clock Time 500) Internal event occurred.

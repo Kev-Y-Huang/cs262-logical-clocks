@@ -127,6 +127,8 @@ class Machine(Thread):
         self.logical_clock = 0
         self.exit = Event()
 
+
+    def run(self):
         # Setup logger for this machine process
         log_name = f'{global_time}_machine_{self.machine_id}'
         setup_logger(
@@ -137,7 +139,6 @@ class Machine(Thread):
         self.rate = random.randint(1, 6)
         self.log.info(f'Clock rate: {self.rate}')
 
-    def run(self):
         # Start listener process for this machine process
         queue = Queue()
         listener = Listener(PORTS[self.machine_id], queue, self.log)
@@ -217,7 +218,7 @@ if __name__ == "__main__":
     # Setup state for the machine processes
     procs = []
     global_time = time.time()
-    total_run_time = 10
+    total_run_time = 100
 
     try:
         # Start machine processes
